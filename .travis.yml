@@ -1,0 +1,25 @@
+notifications:
+  email: false
+
+rvm:
+  - 2.1.0
+  - 2.0.0
+  - 1.9.3
+  - jruby-19mode
+
+before_install:
+  - gem install bundler 
+
+gemfile:
+  - gemfiles/rails3.gemfile
+  - gemfiles/rails4.gemfile
+
+notifications:
+  irc: "irc.freenode.org#blacklight"
+  email:
+      - blacklight-commits@googlegroups.com
+
+env:
+  global:
+    - JRUBY_OPTS="-J-Xms512m -J-Xmx1024m"
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true

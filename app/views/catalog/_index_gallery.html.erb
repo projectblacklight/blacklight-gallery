@@ -1,0 +1,8 @@
+<div class="document col-xs-6 col-md-3">
+  <div class="thumbnail">
+    <%= render_thumbnail_tag document %>
+    <div class="caption">
+      <%= render_document_partials document, blacklight_config.gallery.partials ||blacklight_config.index.partials, :document_counter => document_counter %>
+    </div>
+  </div>
+</div>
