@@ -1,10 +1,14 @@
 #documents.gallery {
   .document {
     border-bottom: none;
-    min-height: 300px;
+    min-height: 400px;
   }
 
   .document-counter {
     display: none;
   }
+}
+
+.view-icon-gallery {
+  &:before { content: "\e011"; } 
 }
