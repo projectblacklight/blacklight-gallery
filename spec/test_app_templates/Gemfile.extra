@@ -19,4 +19,4 @@ end
 
 gem 'jettywrapper', '>= 1.2.0'
 
-gem 'blacklight', "5.0.0.pre2"
+gem 'blacklight'
