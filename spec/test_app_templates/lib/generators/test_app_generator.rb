@@ -14,7 +14,7 @@ class TestAppGenerator < Rails::Generators::Base
       run "bundle install"
     end
 
-    generate 'blacklight'
+    generate 'blacklight:install'
   end
 
   def run_gallery_install

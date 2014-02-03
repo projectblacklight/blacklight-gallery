@@ -2,7 +2,7 @@
   <div class="thumbnail">
     <%= render_thumbnail_tag document %>
     <div class="caption">
-      <%= render_document_partials document, blacklight_config.gallery.partials ||blacklight_config.index.partials, :document_counter => document_counter %>
+      <%= render_document_partials document, blacklight_config.view_config(:gallery).partials, :document_counter => document_counter %>
     </div>
   </div>
 </div>
