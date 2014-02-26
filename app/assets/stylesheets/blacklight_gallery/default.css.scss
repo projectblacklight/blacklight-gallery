@@ -32,6 +32,18 @@
   .index-document-functions {
     clear: left;
   }
+
+  .document-metadata { 
+    dt, dd {
+      float: none;
+      width: auto;
+      clear: none;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+
+  }
 }
 
 .view-icon-gallery {
