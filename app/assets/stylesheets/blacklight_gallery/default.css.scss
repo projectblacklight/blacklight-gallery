@@ -1,7 +1,24 @@
 #documents.gallery {
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
+
+
   .document {
     border-bottom: none;
-    min-height: 400px;
+
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+
+    min-width: 250px;
+    min-height: 250px;
   }
 
   .index_title {
