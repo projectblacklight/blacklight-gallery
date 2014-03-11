@@ -22,6 +22,10 @@ Run the gallery generator:
 
     $ rails g blacklight_gallery:install
 
+## Screenshot
+
+![Screenshot](docs/screen_shot.png)
+
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/blacklight-gallery/fork )
