@@ -7,7 +7,6 @@ require 'rspec/core/rake_task'
 require 'engine_cart/rake_task'
 
 require 'jettywrapper'
-require 'blacklight'
 
 task :default => :ci
 
