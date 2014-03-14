@@ -1,25 +1,11 @@
 <% # container for all documents in slideshow view -%>
 <div id="documents" class="row slideshow">
-  <div id="slideshow" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <% documents.each_with_index do |_, i| %>
-        <li data-target="#slideshow" data-slide-to="<%= i %>"<%=' class="active"'.html_safe if i == 0 %>></li>
-      <% end %>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <%= render collection: documents, as: :document, partial: 'index_slideshow' %>
-    </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#slideshow" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#slideshow" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
+  <h3><%= t(:'blacklight_gallery.catalog.document_slideshow.header') %></h3>
+  <div class="grid">
+    <%= render collection: documents, as: :document, partial: 'grid_slideshow' %>
   </div>
-</div>
 
+  <%= render layout: 'slideshow_modal', locals: {documents: documents} do %>
+    <%= render partial: 'slideshow', locals: {documents: documents} %>
+  <% end %>
+</div>
