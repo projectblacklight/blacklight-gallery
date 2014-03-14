@@ -1,12 +1,15 @@
 require 'spec_helper'
 
-describe "Slideshow view" do
-  before { visit catalog_index_path :q => 'medicine', :view => 'slideshow' }
+describe "Slideshow", :js do
 
-  it "should display results in a slideshow view" do
-    expect(page).to have_selector("#documents.slideshow")
-    expect(page).to have_selector("#slideshow .item.active")
-    expect(page).to have_selector("#slideshow .carousel-caption", text: "Strong Medicine speaks")
+  it "should open when one of the grid panes are clicked" do
+    visit catalog_index_path( :q => 'medicine', :view => 'slideshow' )
+    expect(page).to have_content "You searched for:"
+    within ".view-type" do
+      click_link "Slideshow"
+    end
+    find('.grid [data-slide-to="0"]').click
+    expect(page).to have_selector '#slideshow', visible: true
   end
+  
 end
-

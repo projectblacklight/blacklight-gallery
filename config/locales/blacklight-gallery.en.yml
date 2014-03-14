@@ -4,3 +4,7 @@ en:
       view:
         gallery: "Gallery"
         slideshow: "Slideshow"
+  blacklight_gallery:
+    catalog:
+      document_slideshow:
+        header: "Click an image to start the slideshow"
