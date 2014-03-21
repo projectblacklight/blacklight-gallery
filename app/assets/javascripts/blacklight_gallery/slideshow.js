@@ -1,84 +1,119 @@
 (function($){
   var Slideshow = function (element, options) {
-    this.$element = $(element)
-    this.options  = options
-    this.$pauseButton = this.$element.find('[data-state=pause]')
-    this.$playButton = this.$element.find('[data-state=play]')
+    this.$element = $(element);
+    this.options  = options;
+    this.paused   = false;
+    this.activeIndex = 0;
+
     this.init = function() {
-      this.initialCaption();
-      //caption when a slide happens
-      this.$element.on('slide.bs.carousel', $.proxy(this.changeCaption, this));
-      this.$pauseButton.on('click', $.proxy(this.pause, this));
-      this.$playButton.on('click', $.proxy(this.play, this));
-      this.$element.find('[data-velocity]').on('click', $.proxy(this.adjustSpeed, this));
-      this.$playButton.hide()
-      this.$element.carousel(this.options);
+      this.$items = this.$element.find('.item');
     }
+
+    this.attachEvents();
     this.init();
   }
 
 
   Slideshow.prototype = {
-    changeCaption: function (evt) {
-      this.updateIndex($(evt.relatedTarget).index() + 1);
-      this.caption($(evt.relatedTarget).find('.carousel-caption').html());
+
+    slide: function(item) {
+      var $item     = $(item),
+          $frame    = $item.find('.frame'),
+          marginTop = 0;
+
+      this.$items.hide();
+      $item.show();
+
+      marginTop = Math.round($item.height() - $frame.height())/2;
+      this.activeIndex = this.$items.index(item);
+
+      if (this.options.autoPlay && !this.paused) this.play();
+
+      return this;
     },
 
-    // Set initial caption
-    initialCaption: function () {
-      this.caption(this.$element.find('.item.active .carousel-caption').html());
-      this.updateIndex(1);
-    },
-    
-    caption: function(value) {
-      this.$element.find('#slideshow-caption').html(value);
+    play: function() {
+      this.paused = false;
+
+      if (this.interval) clearInterval(this.interval);
+      this.interval = setInterval($.proxy(this.next, this), this.options.interval);
     },
 
-    updateIndex: function(value) {
-      this.$element.find('#current-slideshow-index').html(value);
+    pause: function() {
+      this.paused = true;
+      this.interval = clearInterval(this.interval);
+
+      return this;
     },
 
-    pause: function(evt) {
-      evt.preventDefault();
-      this.$pauseButton.hide();
-      this.$playButton.show();
-      this.$element.carousel('pause');
+    startAt: function(pos) {
+      this.to(pos);
     },
 
-    play: function(evt) {
-      evt.preventDefault();
-      this.$pauseButton.show();
-      this.$playButton.hide();
-      this.$element.carousel('cycle');
+    next: function() {
+      return this.to('next');
     },
 
-    adjustSpeed: function(evt) {
-      var speed = parseInt($(evt.target).val());
-      this.$element.data('bs.carousel').options.interval = speed;
-      this.$element.carousel('pause').carousel('cycle');
+    to: function(pos) {
+      if (pos === 'next') pos = this.activeIndex + 1;
+      if (pos === 'prev') pos = this.activeIndex - 1;
+
+      return this.slide(this.$items[this.getValidIndex(pos)]);
     },
 
-    openSlide: function(slide) {
-      this.$element.carousel(slide);
+    getValidIndex: function(index) {
+      if (typeof index === 'undefined' || index > (this.$items.length - 1)) index = 0;
+      if (index < 0) index = this.$items.length - 1;
+
+      return index;
+    },
+
+    attachEvents: function() {
+      var $img = this.$element.find('.frame img'),
+          _this = this;
+
+      // pause slideshow on image mouseenter event
+      $img.on('mouseenter', function() {  _this.pause(); });
+
+      // play slideshow on image mouseleave event
+      $img.on('mouseleave', function() {
+        if (_this.options.autoPlay) _this.play();
+      });
+
+      $(document).on('click', '[data-slide], [data-slide-to]', function() {
+        pos = parseInt($(this).attr('data-slide-to'), 10) || $(this).attr('data-slide');
+
+        if (pos === 'next' || pos === 'prev') _this.pause();
+        _this.to(pos);
+      });
+
+      // pause slideshow on modal close
+      $('#slideshow-modal').on('hidden.bs.modal', function() {
+        _this.pause();
+      });
     }
   }
 
+
   Slideshow.DEFAULTS = {
-        interval: 3000,
-        pause: false,
-        wrap: true
+    autoPlay: true,
+    interval: 5000 // in milliseconds
   }
 
-  $.fn.slideshow = function( option ) {
+
+  $.fn.slideshow = function(option) {
     return this.each(function() {
-      var $this = $(this)
-      var data  = $this.data('slideshow')
-      var options = $.extend({}, Slideshow.DEFAULTS, $this.data(), typeof option == 'object' && option)
-      if (!data) $this.data('slideshow', (data = new Slideshow(this, options)))
+      var $this = $(this);
+      var data  = $this.data('slideshow');
+      var options = $.extend({}, Slideshow.DEFAULTS, $this.data(), typeof option == 'object' && option);
+
+      if (!data) $this.data('slideshow', (data = new Slideshow(this, options)));
     })
   }
-})( jQuery ); 
 
-Spotlight.onLoad(function() {
+})(jQuery);
+
+
+Blacklight.onLoad(function() {
   $('#slideshow').slideshow();
 });

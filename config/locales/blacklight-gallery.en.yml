@@ -7,4 +7,6 @@ en:
   blacklight_gallery:
     catalog:
       document_slideshow:
-        header: "Click an image to start the slideshow"
+        header: "Select an image to start the slideshow"
+      modal_slideshow:
+        counter: "%{counter} of %{count}"
