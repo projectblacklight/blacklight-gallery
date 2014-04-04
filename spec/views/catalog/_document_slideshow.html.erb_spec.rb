@@ -15,11 +15,6 @@ describe "catalog/_document_slideshow.html.erb" do
     expect(rendered).to have_selector '#slideshow-modal'
     expect(rendered).to have_selector '[data-slide="prev"]'
     expect(rendered).to have_selector '[data-slide="next"]'
-    expect(rendered).to have_selector '[data-state="play"]'
-    expect(rendered).to have_selector '[data-state="pause"]'
-    expect(rendered).to have_selector '[data-velocity][value="2000"]'
-    expect(rendered).to have_selector '[data-velocity][value="3000"]'
-    expect(rendered).to have_selector '[data-velocity][value="6000"]'
     expect(rendered).to have_selector '[data-slide-to="0"][data-toggle="modal"][data-target="#slideshow-modal"]'
   end
 end

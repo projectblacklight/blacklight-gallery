@@ -8,8 +8,9 @@ describe "Slideshow", :js do
     within ".view-type" do
       click_link "Slideshow"
     end
-    find('.grid [data-slide-to="0"]').click
+
+    find('.grid [data-slide-to="0"]').trigger('click')
     expect(page).to have_selector '#slideshow', visible: true
   end
-  
+
 end
