@@ -1,4 +1,5 @@
 # Blacklight::Gallery
+[![Gem Version](https://badge.fury.io/rb/blacklight-gallery.svg)](http://badge.fury.io/rb/blacklight-gallery)
 
 Gallery views for Blacklight search results
 
