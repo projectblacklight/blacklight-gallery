@@ -1,14 +1,18 @@
 ENV["RAILS_ENV"] ||= 'test'
 
-require 'blacklight'
-require 'blacklight/gallery'
-
 require 'engine_cart'
 EngineCart.load_application!
 
+require 'rspec/collection_matchers'
+require 'rspec/its'
 require 'rspec/rails'
+require 'rspec/active_model/mocks'
+
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
+
+require 'blacklight'
+require 'blacklight/gallery'
 
 RSpec.configure do |c|
   c.treat_symbols_as_metadata_keys_with_true_values = true

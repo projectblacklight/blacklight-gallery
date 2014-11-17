@@ -23,8 +23,12 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "rspec-rails", "~> 3.1"
+  spec.add_development_dependency "rspec-its"
+  spec.add_development_dependency "rspec-activemodel-mocks"
+  spec.add_development_dependency "rspec-collection_matchers"
   spec.add_development_dependency "jettywrapper"
   spec.add_development_dependency "engine_cart"
   spec.add_development_dependency "capybara"
+  spec.add_development_dependency "poltergeist", ">= 1.5.0"
 end
