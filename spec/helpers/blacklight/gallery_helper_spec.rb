@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Blacklight::GalleryHelper do
+describe Blacklight::GalleryHelper, :type => :helper do
   describe "#render_gallery_collection" do
     let(:template) { double }
     before do
@@ -10,12 +10,12 @@ describe Blacklight::GalleryHelper do
     let(:documents) { [ double, double] }
     subject { helper.render_gallery_collection documents}
 
-    it { should eq 'hello hello ' }
+    it { is_expected.to eq 'hello hello ' }
   end
 
   describe "#gallery_wrapper_template" do
     before do
-      helper.stub(:blacklight_config).and_return(CatalogController.blacklight_config)
+      allow(helper).to receive(:blacklight_config).and_return(CatalogController.blacklight_config)
       helper.lookup_context.prefixes << "catalog"
     end
     

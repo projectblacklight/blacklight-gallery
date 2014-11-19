@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe "catalog/_document_slideshow.html.erb" do
+describe "catalog/_document_slideshow.html.erb", :type => :view do
   let(:blacklight_config) { Blacklight::Configuration.new }
 
   let(:document) { stub_model(::SolrDocument) }
 
   before do
-    view.stub(blacklight_config: blacklight_config)
-    view.stub(documents: [document])
+    allow(view).to receive_messages(blacklight_config: blacklight_config)
+    allow(view).to receive_messages(documents: [document])
   end
 
   it "should have a edit tag form" do

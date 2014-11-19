@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Slideshow", :js do
+describe "Slideshow", :js, :type => :feature do
 
   it "should open when one of the grid panes are clicked" do
     visit catalog_index_path( :q => 'medicine', :view => 'slideshow' )
