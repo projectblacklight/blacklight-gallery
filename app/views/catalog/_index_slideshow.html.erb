@@ -2,7 +2,7 @@
   <div class="frame">
       <%= image_tag thumbnail_url(document) %>
       <div class="caption">
-        <%= render_document_index_label document, label: document_show_link_field(document) %>
+        <%= render_index_field_value document, document_show_link_field(document) %>
       </div>
       <span class="counter">
         <%= t :'blacklight_gallery.catalog.modal_slideshow.counter', counter: document_counter + 1, count: count %>
