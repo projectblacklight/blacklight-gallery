@@ -4,6 +4,7 @@ en:
       view:
         gallery: "Gallery"
         slideshow: "Slideshow"
+        masonry: "Masonry"
   blacklight_gallery:
     catalog:
       document_slideshow:
