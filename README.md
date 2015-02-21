@@ -23,6 +23,21 @@ Run the gallery generator:
 
     $ rails g blacklight_gallery:install
 
+## Available Views
+If you would like to add or remove any particular view either add or remove the following configurations from your Blacklight controller.
+
+### Gallery
+
+    config.view.gallery.partials = [:index_header, :index]
+
+### Masonry
+
+    config.view.masonry.partials = [:index]
+
+### Slideshow
+
+    config.view.slideshow.partials = [:index]
+
 ## Screenshot
 
 ![Screenshot](docs/screen_shot.png)
