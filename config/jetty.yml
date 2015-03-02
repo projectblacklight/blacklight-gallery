@@ -1,2 +1,7 @@
+development:
+  startup_wait: 15
+  jetty_port: 8983
 test:
-  jetty_port: 8888
+  startup_wait: 60
+  jetty_port: <%= ENV['TEST_JETTY_PORT'] || 8888 %>
+  <%= ENV['TEST_JETTY_PATH'] ? "jetty_home: " + ENV['TEST_JETTY_PATH'] : '' %>

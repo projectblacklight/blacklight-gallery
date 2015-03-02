@@ -41,3 +41,20 @@ task :ci => ['jetty:clean', 'engine_cart:generate'] do
   end
   raise "test failures: #{error}" if error
 end
+
+
+task :server do
+  unless File.exists? 'jetty'
+    Rake::Task['jetty:clean'].invoke
+  end
+
+  jetty_params = Jettywrapper.load_config
+  jetty_params[:startup_wait]= 60
+
+  Jettywrapper.wrap(jetty_params) do
+    within_test_app do
+      system "rake blacklight:solr:seed"
+      system "bundle exec rails s"
+    end
+  end
+end
