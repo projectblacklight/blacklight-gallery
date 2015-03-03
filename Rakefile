@@ -1,10 +1,11 @@
 require "bundler/gem_tasks"
 
-ZIP_URL = "https://github.com/projectblacklight/blacklight-jetty/archive/v4.10.2.zip"
+ZIP_URL = "https://github.com/projectblacklight/blacklight-jetty/archive/v4.10.3.zip"
 APP_ROOT = File.dirname(__FILE__)
 
 require 'rspec/core/rake_task'
 require 'engine_cart/rake_task'
+EngineCart.fingerprint_proc = EngineCart.rails_fingerprint_proc
 
 require 'jettywrapper'
 
