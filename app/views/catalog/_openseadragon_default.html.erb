@@ -21,8 +21,7 @@
 
 <% unless image.nil? %>
   <% count = Array(image).length %>
-
-  <div class="col-md-6">
+  <div class="openseadragon-container <%= osd_container_class %>">
     <div class="osd-toolbar row">
       <% if count > 1 %>
         <% osd_config = osd_config_referencestrip.merge(osd_config) %>
