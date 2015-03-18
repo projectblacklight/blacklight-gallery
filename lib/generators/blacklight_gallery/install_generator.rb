@@ -29,10 +29,8 @@ module BlacklightGallery
       end
     end
 
-    def add_controller_helpers
-      inject_into_class 'app/controllers/catalog_controller.rb', CatalogController do
-        "\n  helper Openseadragon::OpenseadragonHelper\n"
-      end
+    def add_openseadragon
+      generate 'openseadragon:install'
     end
   end
 end
