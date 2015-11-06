@@ -8,6 +8,7 @@ describe "catalog/_document_slideshow.html.erb", :type => :view do
   before do
     allow(view).to receive_messages(blacklight_config: blacklight_config)
     allow(view).to receive_messages(documents: [document])
+    allow(view).to receive(:blacklight_configuration_context).and_return(double(evaluate_if_unless_configuration: true))
   end
 
   it "should have a edit tag form" do
