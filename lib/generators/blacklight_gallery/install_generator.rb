@@ -12,14 +12,11 @@ module BlacklightGallery
 
     def configuration
       inject_into_file 'app/controllers/catalog_controller.rb', after: "configure_blacklight do |config|" do
-        <<-EOF
-          config.view.gallery.partials = [:index_header, :index]
-          config.view.masonry.partials = [:index]
-          config.view.slideshow.partials = [:index]
-
-          config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
-          config.show.partials.insert(1, :openseadragon)
-        EOF
+        "\n    config.view.gallery.partials = [:index_header, :index]" \
+        "\n    config.view.masonry.partials = [:index]" \
+        "\n    config.view.slideshow.partials = [:index]\n\n" \
+        "\n    config.show.tile_source_field = :content_metadata_image_iiif_info_ssm" \
+        "\n    config.show.partials.insert(1, :openseadragon)"
       end
     end
 
