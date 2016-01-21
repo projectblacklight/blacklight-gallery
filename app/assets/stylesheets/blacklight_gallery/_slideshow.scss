@@ -1,5 +1,5 @@
 .view-icon-slideshow {
-  &:before { content: "\e158"; } 
+  &:before { content: "\e158"; }
 }
 
 $gray-light: lightgray !default;
@@ -102,7 +102,7 @@ $gray-dark: darkgray !default;
     margin-bottom: 15px;
   }
 
-  h3 {
+  .slideshow h3 {
     background-color: whitesmoke;
     border-radius: 3px;
     border: 1px solid #ddd;
