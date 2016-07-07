@@ -7,6 +7,8 @@ en:
         masonry: "Masonry"
   blacklight_gallery:
     catalog:
+      grid_slideshow:
+        missing_image: 'Missing'
       document_slideshow:
         header: "Select an image to start the slideshow"
       modal_slideshow:

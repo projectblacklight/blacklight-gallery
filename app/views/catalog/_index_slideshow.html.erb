@@ -1,8 +1,8 @@
 <div class="item<%= ' active' if document_counter == 0 %>">
   <div class="frame">
-      <%= image_tag thumbnail_url(document) %>
+      <%= image_tag thumbnail_url(document) if thumbnail_url(document) %>
       <div class="caption">
-        <%= render_index_field_value document, document_show_link_field(document) %>
+        <%= index_presenter(document).label(document_show_link_field(document)) %>
       </div>
       <span class="counter">
         <%= t :'blacklight_gallery.catalog.modal_slideshow.counter', counter: document_counter + 1, count: count %>
