@@ -1,15 +1,12 @@
 language: ruby
 sudo: false
-cache:
-  directories:
-  - /tmp/solr-5.3.0
 
 notifications:
   email: false
 
 rvm:
-  - 2.3.0
-  - 2.2.4
+  - 2.3.1
+  - 2.2.5
 
 notifications:
   irc: "irc.freenode.org#blacklight"
@@ -19,3 +16,5 @@ notifications:
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
+jdk: oraclejdk8
