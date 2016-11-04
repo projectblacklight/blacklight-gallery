@@ -80,7 +80,10 @@
         if (_this.options.autoPlay) _this.play();
       });
 
-      $(document).on('click', '[data-slide], [data-slide-to]', function() {
+      $(document).on('click', '[data-slide], [data-slide-to]', function(e) {
+
+        e.preventDefault();
+
         pos = parseInt($(this).attr('data-slide-to'), 10) || $(this).attr('data-slide');
 
         if (pos === 'next' || pos === 'prev') _this.pause();
