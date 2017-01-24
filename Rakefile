@@ -34,6 +34,7 @@ task :ci => ['engine_cart:generate'] do
 end
 
 
+desc "Run Solr and Blacklight for interactive development"
 task :server do
   require 'solr_wrapper'
   SolrWrapper.wrap(port: '8983') do |solr|
