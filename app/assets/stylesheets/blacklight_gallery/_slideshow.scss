@@ -5,7 +5,7 @@
 $gray-light: lightgray !default;
 $gray-dark: darkgray !default;
 
-#slideshow-modal {
+.slideshow-modal {
   .modal-dialog {
     width: 100%;
     margin: 1% auto;
@@ -29,7 +29,7 @@ $gray-dark: darkgray !default;
   }
 }
 
-#slideshow {
+.slideshow-presenter {
   height: 100%;
 
   .slideshow-inner {
@@ -94,7 +94,7 @@ $gray-dark: darkgray !default;
   }
 }
 
-#documents {
+.slideshow-documents {
   margin: 0;
 
   .info {
