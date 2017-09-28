@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in blacklight-gallery.gemspec
 gemspec
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
+end
+
 gem 'activerecord-jdbcsqlite3-adapter', :platform => :jruby
 
 # BEGIN ENGINE_CART BLOCK
@@ -39,3 +44,7 @@ else
   end
 end
 # END ENGINE_CART BLOCK
+
+unless File.exist?(file)
+  eval_gemfile File.expand_path('spec/test_app_templates/Gemfile.extra', File.dirname(__FILE__))
+end
