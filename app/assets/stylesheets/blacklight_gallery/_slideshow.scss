@@ -125,18 +125,20 @@ $gray-dark: darkgray !default;
       .thumbnail {
         border: 1px solid #999;
         border-radius: 0;
-        min-width: $square-thumb-size;
         min-height: $square-thumb-size;
+        min-width: $square-thumb-size;
         overflow: hidden;
+        padding: 0px;
         position: relative;
         width: $square-thumb-size;
 
         a > img {
-          position: absolute;
-          max-width: none;
+          height: $square-thumb-size;
           max-height: none;
-          left: -50%;
-          top: -50%;
+          max-width: none;
+          object-fit: cover;
+          position: absolute;
+          width: $square-thumb-size;
         }
       }
     }
