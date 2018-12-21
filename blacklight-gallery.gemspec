@@ -18,8 +18,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails"
-  spec.add_dependency 'blacklight', '~> 7.0.0.alpha'
-  spec.add_dependency "bootstrap-sass", "~> 3.0"
+  spec.add_dependency 'blacklight', '~> 7.0'
+  spec.add_dependency "bootstrap-sass", "~> 4.0"
   spec.add_dependency "openseadragon", ">= 0.2.0"
 
   spec.add_development_dependency "bundler", "~> 1.5"
