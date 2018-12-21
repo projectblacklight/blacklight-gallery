@@ -10,7 +10,7 @@ describe "Slideshow", :js, :type => :feature do
       click_link "Slideshow"
     end
 
-    find('.grid [data-slide-to="0"]').trigger('click')
+    find('.grid [data-slide-to="0"]').click
     expect(page).to have_selector '#slideshow', visible: true
   end
 

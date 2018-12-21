@@ -19,10 +19,9 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails"
   spec.add_dependency 'blacklight', '~> 7.0'
-  spec.add_dependency "bootstrap-sass", "~> 4.0"
+  spec.add_dependency "bootstrap", "~> 4.0"
   spec.add_dependency "openseadragon", ">= 0.2.0"
 
-  spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency "rspec-rails", "~> 3.1"
@@ -30,7 +29,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-activemodel-mocks"
   spec.add_development_dependency "rspec-collection_matchers"
   spec.add_development_dependency "solr_wrapper"
-  spec.add_development_dependency "engine_cart", "~> 1.1"
+  spec.add_development_dependency "engine_cart", "~> 2.0"
   spec.add_development_dependency "capybara"
-  spec.add_development_dependency "poltergeist", ">= 1.5.0"
+  spec.add_development_dependency 'chromedriver-helper'
+  spec.add_development_dependency "selenium-webdriver", '>= 3.13.1'
 end
