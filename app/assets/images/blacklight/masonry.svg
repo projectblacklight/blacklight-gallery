@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Masonry</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="Masonry" stroke="#000000" stroke-width="3">
+            <path d="M8,0 L8,6.5" id="Line"></path>
+            <path d="M14.5,8.5 L14.5,15" id="Line"></path>
+            <path d="M1.5,8.5 L1.5,15" id="Line"></path>
+            <path d="M8,12 L8,14.5" id="Line"></path>
+            <path d="M14.5,1 L14.5,2.5" id="Line"></path>
+            <path d="M1.5,1 L1.5,2.5" id="Line"></path>
+        </g>
+    </g>
+</svg>

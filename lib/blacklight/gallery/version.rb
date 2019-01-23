@@ -1,5 +1,5 @@
 module Blacklight
   module Gallery
-    VERSION = "0.11.0"
+    VERSION = "1.0.0.alpha"
   end
 end

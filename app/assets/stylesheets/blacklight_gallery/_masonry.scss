@@ -8,9 +8,9 @@
 .masonry {
   &.document {
     padding: 0;
-    margin: 0 $padding-xs-horizontal $padding-large-vertical 0;
+    margin: 0 $spacer $spacer 0;
     border-bottom: 0;
-    background-color: $gray-lighter;
+    background-color: $gray-300;
     min-height: 70px;
 
     .thumbnail {
@@ -21,8 +21,7 @@
     .caption {
       &:first-child { display: block; } // To display captions when there is no image
       a {
-        color: $gray-lighter;
-        text-shadow: $carousel-text-shadow;
+        color: $gray-300;
       }
       line-height: 17px;
       background-color: rgba(0,0,0,0.3);

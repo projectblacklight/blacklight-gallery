@@ -4,7 +4,6 @@ APP_ROOT = File.dirname(__FILE__)
 
 require 'rspec/core/rake_task'
 require 'engine_cart/rake_task'
-EngineCart.fingerprint_proc = EngineCart.rails_fingerprint_proc
 
 task :default => :ci
 
