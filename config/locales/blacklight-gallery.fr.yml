@@ -1,0 +1,15 @@
+fr:
+  blacklight:
+    search:
+      view:
+        gallery: "Galerie"
+        slideshow: "Diaporama"
+        masonry: "Mosaïque"
+  blacklight_gallery:
+    catalog:
+      grid_slideshow:
+        missing_image: 'Image manquante'
+      document_slideshow:
+        header: "Sélectionnez une image pour lancer le diaporama"
+      modal_slideshow:
+        counter: "%{counter} de %{count}"
