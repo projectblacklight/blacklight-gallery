@@ -1,0 +1,15 @@
+ar:
+  blacklight:
+    search:
+      view:
+        gallery: "معرض الصور"
+        slideshow: "عرض متتابع"
+        masonry: "عرض الصور كمجموعة"
+  blacklight_gallery:
+    catalog:
+      grid_slideshow:
+        missing_image: "صورة غير موجودة"
+      document_slideshow:
+        header: "حدد صورة لبدء العرض المتتابع"
+      modal_slideshow:
+        counter: "%{counter} من %{count}"
