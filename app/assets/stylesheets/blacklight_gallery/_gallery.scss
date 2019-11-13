@@ -1,5 +1,5 @@
 .view-icon-gallery {
-  &:before { content: "\e011"; } 
+  &:before { content: "\e011"; }
 }
 
 .gallery {
@@ -26,8 +26,12 @@
     -webkit-flex: 1 0 250px;
   }
 
+  .caption {
+    @extend .mt-2;
+  }
+
   .index_title {
-    width: 100%;
+    @extend .h6;
   }
 
   .document-counter {
@@ -38,7 +42,7 @@
     clear: left;
   }
 
-  .document-metadata { 
+  .document-metadata {
     dt, dd {
       float: none;
       width: auto;
