@@ -1,9 +1,5 @@
-.view-icon-slideshow {
-  &:before { content: "\e158"; }
-}
-
 $gray-light: lightgray !default;
-$gray-dark: darkgray !default;
+$gray-dark: #343a40 !default;
 
 .slideshow-modal {
   .modal-dialog {
@@ -35,6 +31,7 @@ $gray-dark: darkgray !default;
   .slideshow-inner {
     height: 100%;
     overflow: hidden;
+    padding-bottom: 20px;
 
     .item {
       width: 100%;
@@ -59,19 +56,24 @@ $gray-dark: darkgray !default;
   }
 
   .carousel-control {
-    background-image: none;
+    position: absolute;
+    top: 0;
     height: 100%;
     width: 50px;
-
-    .glyphicon {
-      color: $gray-light;
+    .blacklight-icons {
+      width: 3rem;
+      svg {
+        height: 3rem;
+        width: 3rem;
+        fill: $gray-light;
+      }
     }
   }
-  .carousel-control.left .glyphicon  {
-    padding-right: 3px;
+  .carousel-control.left  {
+    left: 0px;
   }
-  .carousel-control.right .glyphicon  {
-    padding-left: 2px;
+  .carousel-control.right  {
+    right: 0px;
   }
 
   .caption {
@@ -83,7 +85,6 @@ $gray-dark: darkgray !default;
   }
 
   .counter {
-    // background-color: $gray-light;
     border-radius: 12px;
     border: 1px solid $gray-light;
     color: $gray-light;
