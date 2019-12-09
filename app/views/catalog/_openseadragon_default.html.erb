@@ -27,16 +27,16 @@
         <% osd_config = osd_config_referencestrip.merge(osd_config) %>
 
         <div class="col-md-6 pagination">
-          <a id="osd-previous"><%= Blacklight::Icon.new('chevron_left').file_source %></a>'
+          <a id="osd-previous"><%= blacklight_icon('chevron_left') %></a>
           <span id="osd-page">1</span>  of <%= count %>
-          <a id="osd-next"><%= Blacklight::Icon.new('chevron_right').file_source %></a>'
+          <a id="osd-next"><%= blacklight_icon('chevron_right') %></a>
         </div>
       <% end %>
         <div class="col-md-6 controls">
-          <a id="osd-zoom-in"><%= Blacklight::Icon.new('add_circle').file_source %></a>'
-          <a id="osd-zoom-out"><%= Blacklight::Icon.new('remove_circle').file_source %></a>'
-          <a id="osd-home"><%= Blacklight::Icon.new('resize_small').file_source %></a>'
-          <a id="osd-full-page"><%= Blacklight::Icon.new('custom_fullscreen').file_source %></a>'
+          <a id="osd-zoom-in"><%= blacklight_icon('add_circle') %></a>
+          <a id="osd-zoom-out"><%= blacklight_icon('remove_circle') %></a>
+          <a id="osd-home"><%= blacklight_icon('resize_small') %></a>
+          <a id="osd-full-page"><%= blacklight_icon('custom_fullscreen') %></a>
         </div>
     </div>
     <%= openseadragon_picture_tag image, class: 'osd-image row', data: { openseadragon: osd_config } %>
