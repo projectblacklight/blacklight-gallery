@@ -1,0 +1,15 @@
+es:
+  blacklight:
+    search:
+      view:
+        gallery: Categoría
+        slideshow: Diapositivas
+        masonry: Mosaico
+  blacklight_gallery:
+    catalog:
+      grid_slideshow:
+        missing_image: No hay nada
+      document_slideshow:
+        header: Selecione una imagen para empezar
+      modal_slideshow:
+        counter: "%{counter} de %{count}"
