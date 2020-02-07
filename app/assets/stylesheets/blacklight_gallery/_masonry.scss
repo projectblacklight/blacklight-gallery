@@ -6,11 +6,11 @@
     background-color: $gray-300;
     min-height: 70px;
 
-    .thumbnail {
-      border: 0;
+    .img-thumbnail {
+      border-radius: 0;
       padding: 0;
-      margin-bottom: 0;
     }
+
     .caption {
       &:first-child { display: block; } // To display captions when there is no image
       a {
