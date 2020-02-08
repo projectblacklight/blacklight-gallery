@@ -13,7 +13,7 @@ describe "catalog/_index_gallery.html.erb", :type => :view do
   end
 
   it "should have thumbnail and caption" do
-    expect(view).to receive(:render_thumbnail_tag).with(document, { class: 'img-thumbnail' }, hash_including(:counter)).and_return('Thumbnail')
+    expect(view).to receive(:render_thumbnail_tag).with(document, { class: 'img-thumbnail', alt: '' }, hash_including(:counter)).and_return('Thumbnail')
     expect(view).to receive(:render_document_partials).with(document, ['a', 'b'], document_counter: 3).and_return('Z')
     render
     expect(rendered).to have_selector '.thumbnail', text: 'Thumbnail'
