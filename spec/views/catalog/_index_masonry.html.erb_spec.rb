@@ -3,8 +3,10 @@ require 'spec_helper'
 describe "catalog/_document_masonry.html.erb", :type => :view do
   let(:blacklight_config) { Blacklight::Configuration.new }
   let(:documents) { [stub_model(::SolrDocument), stub_model(::SolrDocument)] }
+  let(:presenter) { instance_double(Blacklight::IndexPresenter, heading: 'xyz')}
   before do
     allow(view).to receive_messages(blacklight_config: blacklight_config)
+    allow(view).to receive_messages(index_presenter: presenter)
     allow(view).to receive_messages(documents: documents)
     allow(view).to receive_messages(document_counter: 1)
     allow(view).to receive_messages(document_counter_with_offset: 1)
@@ -23,6 +25,7 @@ describe "catalog/_document_masonry.html.erb", :type => :view do
 
   it 'should render the thumbnail' do
     expect(rendered).to have_css('.thumbnail', text: 'Thumbnail')
+    expect(view).to have_received(:render_thumbnail_tag).with(documents.first, { class: 'img-thumbnail', alt: 'xyz' }, counter: 1)
   end
 
   it 'should render the caption' do
