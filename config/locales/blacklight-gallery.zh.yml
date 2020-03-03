@@ -9,7 +9,8 @@ zh:
     catalog:
       grid_slideshow:
         missing_image: '图片缺失'
-      document_slideshow:
-        header: '选择图片启动幻灯展示'
       modal_slideshow:
         counter: "%{counter} of %{count}"
+      slideshow:
+        pause: 暂停幻灯片展示
+        start: 启动幻灯片展示

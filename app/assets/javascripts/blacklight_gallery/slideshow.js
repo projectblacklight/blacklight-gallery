@@ -72,12 +72,16 @@
       var $img = this.$element.find('.frame img'),
           _this = this;
 
-      // pause slideshow on image mouseenter event
-      $img.on('mouseenter', function() {  _this.pause(); });
+      $(document).on('click', '[data-behavior="pause-slideshow"]', function(e) {
+        e.preventDefault();
 
-      // play slideshow on image mouseleave event
-      $img.on('mouseleave', function() {
-        if (_this.options.autoPlay) _this.play();
+        _this.pause();
+      });
+
+      $(document).on('click', '[data-behavior="start-slideshow"]', function(e) {
+        e.preventDefault();
+
+        _this.play();
       });
 
       $(document).on('click', '[data-slide], [data-slide-to]', function(e) {
@@ -99,7 +103,7 @@
 
 
   Slideshow.DEFAULTS = {
-    autoPlay: true,
+    autoPlay: false,
     interval: 5000 // in milliseconds
   }
 

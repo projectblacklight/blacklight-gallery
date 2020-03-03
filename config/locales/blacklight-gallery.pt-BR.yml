@@ -13,3 +13,6 @@ pt-BR:
         header: "Selecione uma imagem para iniciar a apresentação de slides"
       modal_slideshow:
         counter: "%{counter} de %{count}"
+      slideshow:
+        pause: Pausar a apresentação de slides
+        start: Iniciar a apresentação de slides

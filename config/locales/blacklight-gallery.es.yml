@@ -9,7 +9,8 @@ es:
     catalog:
       grid_slideshow:
         missing_image: No hay nada
-      document_slideshow:
-        header: Selecione una imagen para empezar
       modal_slideshow:
         counter: "%{counter} de %{count}"
+      slideshow:
+        pause: Pausa la Diapositivas
+        start: Empezar la Diapositivas

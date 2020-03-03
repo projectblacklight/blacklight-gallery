@@ -93,6 +93,12 @@ $gray-dark: #343a40 !default;
     padding: 4px 10px;
     text-align: center;
   }
+
+  .controls {
+    svg {
+      fill: $gray-light;
+    }
+  }
 }
 
 .slideshow-documents {
