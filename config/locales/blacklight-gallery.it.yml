@@ -9,7 +9,8 @@ it:
     catalog:
       grid_slideshow:
         missing_image: 'Mancante'
-      document_slideshow:
-        header: "Seleziona un immagine per l'avvio del slideshow"
       modal_slideshow:
         counter: "%{counter} di %{count}"
+      slideshow:
+        pause: Pausa del slideshow
+        start: Avvia del slideshow

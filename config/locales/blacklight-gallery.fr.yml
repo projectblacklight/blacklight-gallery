@@ -9,7 +9,8 @@ fr:
     catalog:
       grid_slideshow:
         missing_image: 'Image manquante'
-      document_slideshow:
-        header: "Sélectionnez une image pour lancer le diaporama"
       modal_slideshow:
         counter: "%{counter} de %{count}"
+      slideshow:
+        pause: Suspendre le diaporama
+        start: Lancer le diaporama

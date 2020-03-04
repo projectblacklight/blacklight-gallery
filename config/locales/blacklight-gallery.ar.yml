@@ -9,7 +9,8 @@ ar:
     catalog:
       grid_slideshow:
         missing_image: "صورة غير موجودة"
-      document_slideshow:
-        header: "حدد صورة لبدء العرض المتتابع"
       modal_slideshow:
         counter: "%{counter} من %{count}"
+      slideshow:
+        pause: "وقفة عرض الشرائح"
+        start: "بدء عرض الشرائح"

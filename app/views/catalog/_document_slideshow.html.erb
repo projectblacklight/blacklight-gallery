@@ -1,9 +1,5 @@
 <% # container for all documents in slideshow view -%>
 <div id="documents" class="row slideshow-documents">
-  <div class="info w-100">
-    <h3><%= t(:'blacklight_gallery.catalog.document_slideshow.header') %></h3>
-  </div>
-
   <div class="grid">
     <%= render collection: documents, as: :document, partial: 'grid_slideshow' %>
   </div>
