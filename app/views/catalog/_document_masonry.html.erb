@@ -1,4 +1,4 @@
 <% # container for all documents in index view -%>
-<div id="documents" class="row" data-behavior="masonry-gallery">
+<div id="documents" class="row masonry-gallery" data-behavior="masonry-gallery">
   <%= render collection: documents, as: :document, partial: 'index_masonry', locals: {count: documents.count} %>
 </div>

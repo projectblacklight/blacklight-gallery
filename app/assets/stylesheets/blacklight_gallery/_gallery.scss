@@ -48,3 +48,7 @@
 
   }
 }
+
+#documents .gallery, .masonry-gallery, .slideshow-documents {
+  border-bottom: $pagination-border-width solid $pagination-border-color
+}
