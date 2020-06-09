@@ -1,5 +1,5 @@
 # Blacklight::Gallery
-[![Gem Version](https://badge.fury.io/rb/blacklight-gallery.svg)](http://badge.fury.io/rb/blacklight-gallery)
+[![Gem Version](https://badge.fury.io/rb/blacklight-gallery.svg)](http://badge.fury.io/rb/blacklight-gallery)  [![Build Status](https://travis-ci.org/projectblacklight/blacklight-gallery.svg?branch=master)](https://travis-ci.org/projectblacklight/blacklight-gallery)
 
 Gallery views for Blacklight search results
 
