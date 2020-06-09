@@ -1,12 +1,15 @@
 language: ruby
 sudo: false
+dist: bionic
+
+addons:
+  chrome: stable
+
+before_install:
+  - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 
 notifications:
   email: false
-
-rvm:
-  - 2.5.3
-  - 2.6.0
 
 notifications:
   irc: "irc.freenode.org#blacklight"
@@ -16,6 +19,20 @@ notifications:
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-    - RAILS_VERSION='5.2.3'
+    - ENGINE_CART_RAILS_OPTIONS='--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test'
+
+matrix:
+  include:
+    - rvm: 2.7.1
+      env: "RAILS_VERSION=6.0.3.1"
+    - rvm: 2.6.6
+      env: "RAILS_VERSION=6.0.3.1"
+    - rvm: 2.6.6
+      env: "RAILS_VERSION=5.2.4.3"
+    - rvm: 2.5.8
+      env: "RAILS_VERSION=5.2.4.3"
+    - rvm: 2.4.9
+      env: "RAILS_VERSION=5.2.4.3"
+fast_finish: true
 
 jdk: openjdk11
