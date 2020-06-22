@@ -13,6 +13,7 @@ module BlacklightGallery
     def configuration
       inject_into_file 'app/controllers/catalog_controller.rb', after: "configure_blacklight do |config|" do
         "\n    config.view.gallery.partials = [:index_header, :index]" \
+        "\n    # config.view.gallery.classes = 'row-cols-2 row-cols-md-3'" \
         "\n    config.view.masonry.partials = [:index]" \
         "\n    config.view.slideshow.partials = [:index]\n\n" \
         "\n    config.show.tile_source_field = :content_metadata_image_iiif_info_ssm" \

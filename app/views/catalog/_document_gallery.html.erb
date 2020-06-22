@@ -1,4 +1,4 @@
 <% # container for all documents in index view -%>
-<div id="documents" class="row gallery">
+<div id="documents" class="gallery row <%= blacklight_config.view_config(:gallery).classes || 'row-cols-2 row-cols-md-3' %>">
   <%= render_gallery_collection documents %>
 </div>
