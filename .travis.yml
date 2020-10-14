@@ -12,7 +12,6 @@ notifications:
   email: false
 
 notifications:
-  irc: "irc.freenode.org#blacklight"
   email:
       - blacklight-commits@googlegroups.com
 
