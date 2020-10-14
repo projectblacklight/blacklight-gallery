@@ -8,6 +8,10 @@ module BlacklightGallery
     def assets
       copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
       copy_file "blacklight_gallery.js", "app/assets/javascripts/blacklight_gallery.js"
+
+      insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
+        "\n//= require blacklight_gallery"
+      end
     end
 
     def configuration
