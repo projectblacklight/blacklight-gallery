@@ -6,13 +6,23 @@
       }
     }
 
+    margin-bottom: $spacer;
     position: relative;
     width: auto;
+
     .thumbnail-container {
       position: relative;
+      min-height: 200px;
+      min-width: 200px;
     }
 
     .caption-area {
+      // styling for documents without thumbnails
+      &:first-child {
+        display: block;
+        max-height: 100%;
+        background-color: rgba(0,0,0,0.7) !important;
+      }
       @extend .bg-dark;
       @extend .text-white;
       display: none;
