@@ -8,7 +8,7 @@ module Blacklight
         url = slideshow_image_url(document)
 
         image_tag url, image_options if url.present?
-      elsif has_thumbnail?(document)
+      elsif document_presenter(document).thumbnail.exists?
         document_presenter(document).thumbnail.thumbnail_tag(image_options, url_options.reverse_merge(suppress_link: true))
       end
     end
