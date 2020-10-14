@@ -101,7 +101,7 @@ $gray-dark: #343a40 !default;
   }
 }
 
-.slideshow-documents {
+.documents-slideshow {
   margin: 0;
 
   .info {
@@ -120,10 +120,11 @@ $gray-dark: #343a40 !default;
   }
 
   .grid {
+    display: flex;
     $square-thumb-size: 100px;
 
     .document {
-      float: left;
+      display: flex;
       margin-right: 20px;
       margin-top: 0;
       padding-top: 0;
@@ -140,7 +141,7 @@ $gray-dark: #343a40 !default;
         position: relative;
         width: $square-thumb-size;
 
-        a > img {
+        img {
           height: $square-thumb-size;
           max-height: none;
           max-width: none;

@@ -10,5 +10,5 @@
 })(jQuery);
 
 Blacklight.onLoad(function() {
-  $('[data-behavior="masonry-gallery"]').BlacklightMasonry();
+  $('.documents-masonry').BlacklightMasonry();
 });

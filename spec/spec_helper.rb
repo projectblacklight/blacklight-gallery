@@ -29,5 +29,6 @@ require 'blacklight/gallery'
 RSpec.configure do |c|
   c.infer_spec_type_from_file_location!
   c.full_backtrace = true
+  c.include ViewComponent::TestHelpers, type: :component
   #onfig.assets.precompile += %w(spotlight/default_thumbnail.jpg spotlight/default_browse_thumbnail.jpg)
 end

@@ -1,4 +1,3 @@
-<% # container for all documents in index view -%>
-<div id="documents" class="row masonry-gallery" data-behavior="masonry-gallery">
-  <%= render collection: documents, as: :document, partial: 'index_masonry', locals: {count: documents.count} %>
+<div id="documents" class="<%= (Array(blacklight_config.view_config(document_index_view_type).classes) + ["documents-#{document_index_view_type}"]).join(' ') %>">
+  <%= render documents, as: :document %>
 </div>

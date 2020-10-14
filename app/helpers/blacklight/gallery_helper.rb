@@ -19,7 +19,7 @@ module Blacklight
 
         image_tag url, image_options if url.present?
       elsif has_thumbnail?(document)
-        render_thumbnail_tag(document, image_options, url_options.reverse_merge(suppress_link: true))
+        document_presenter(document).thumbnail.thumbnail_tag(image_options, url_options.reverse_merge(suppress_link: true))
       end
     end
 

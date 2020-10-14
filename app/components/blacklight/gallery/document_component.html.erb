@@ -1,0 +1,20 @@
+<%= render(Blacklight::DocumentComponent.new(classes: 'col', component: :div, document: @document, counter: @counter)) do |component| %>
+  <% component.with(:body) do %>
+    <div class="thumbnail-container">
+      <%= thumbnail %>
+
+      <div class="caption-area">
+        <div class="caption container">
+          <header class="documentHeader row">
+            <%= content_tag @title_component, class: 'index_title document-title-heading' do %>
+              <%= before_title %><%= title %><%= after_title %>
+            <% end %>
+            <%= actions %>
+          </header>
+          <%= content %>
+          <%= metadata %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

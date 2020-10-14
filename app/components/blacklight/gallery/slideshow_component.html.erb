@@ -1,0 +1,12 @@
+<div class="item<%= ' active' if @counter == 1 %>">
+  <div class="frame">
+      <%= slideshow_tag %>
+      <div class="caption">
+        <%= presenter.heading %>
+      </div>
+
+      <span class="counter">
+        <%= t :'blacklight_gallery.catalog.modal_slideshow.counter', counter: @counter, count: count %>
+      </span>
+  </div>
+</div>
