@@ -85,7 +85,6 @@
       });
 
       $(document).on('click', '[data-slide], [data-slide-to]', function(e) {
-
         e.preventDefault();
 
         pos = parseInt($(this).attr('data-slide-to'), 10) || $(this).attr('data-slide');
@@ -122,5 +121,5 @@
 
 
 Blacklight.onLoad(function() {
-  $('#slideshow').slideshow();
+  $('.documents-slideshow').slideshow();
 });

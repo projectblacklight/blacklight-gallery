@@ -1,10 +1,31 @@
-<% # container for all documents in slideshow view -%>
-<div id="documents" class="row slideshow-documents">
+<div id="documents" class="<%= (Array(blacklight_config.view_config(document_index_view_type).classes) + ["documents-#{document_index_view_type}"]).join(' ') %>">
   <div class="grid">
-    <%= render collection: documents, as: :document, partial: 'grid_slideshow' %>
+    <%= render((blacklight_config.view_config(document_index_view_type).preview_component || Blacklight::Gallery::SlideshowPreviewComponent).with_collection(documents)) %>
   </div>
 
-  <%= render layout: 'slideshow_modal', locals: {documents: documents} do %>
-    <%= render partial: 'slideshow', locals: {documents: documents} %>
+  <%= render layout: 'slideshow_modal' do %>
+    <div id="slideshow" class="slideshow-presenter">
+      <!-- Wrapper for slides -->
+      <div class="slideshow-inner">
+        <%= render documents, as: :document %>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control prev" href="#slideshow" data-slide="prev">
+        <%= blacklight_icon 'chevron_left', { additional_options: { label_context: 'previous_image' }} %>
+      </a>
+      <a class="right carousel-control next" href="#slideshow" data-slide="next">
+        <%= blacklight_icon 'chevron_right', { additional_options: { label_context: 'next_image' }} %>
+      </a>
+
+      <div class="controls text-center">
+        <button class="btn btn-sm btn-link" data-behavior="pause-slideshow" aria-label="<%= t('blacklight_gallery.catalog.slideshow.pause') %>">
+          <%= blacklight_icon 'pause_slideshow' %>
+        </button>
+        <button class="btn btn-sm btn-link" data-behavior="start-slideshow" aria-label="<%= t('blacklight_gallery.catalog.slideshow.start') %>">
+          <%= blacklight_icon 'start_slideshow' %>
+        </button>
+      </div>
+    </div>
   <% end %>
 </div>

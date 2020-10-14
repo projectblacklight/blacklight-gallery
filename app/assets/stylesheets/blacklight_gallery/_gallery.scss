@@ -1,6 +1,7 @@
-.gallery {
+.documents-gallery {
   .document {
     border-bottom: none;
+    display: flex;
 
     min-height: 250px;
     -webkit-flex: 1 0 250px;
@@ -24,16 +25,20 @@
 
   .document-metadata {
     dt, dd {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
       float: none;
       width: auto;
       clear: none;
       text-align: left;
       margin: 0;
     }
-
   }
 }
 
-#documents .gallery, .masonry-gallery, .slideshow-documents {
+.documents-gallery, .documents-masonry, .documents-slideshow {
+  padding-bottom: $spacer;
   border-bottom: $pagination-border-width solid $pagination-border-color
 }

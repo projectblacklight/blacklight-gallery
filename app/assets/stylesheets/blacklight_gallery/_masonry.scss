@@ -1,35 +1,66 @@
-.masonry {
-  &.document {
-    padding: 0;
-    margin: 0 $spacer $spacer 0;
-    border-bottom: 0;
-    background-color: $gray-300;
-    min-height: 70px;
-
-    .img-thumbnail {
-      border-radius: 0;
-      padding: 0;
+.documents-masonry {
+  .document {
+    &:hover, &:focus {
+      .caption-area {
+        display: block;
+      }
     }
 
-    .caption {
-      &:first-child { display: block; } // To display captions when there is no image
-      a {
-        color: $gray-300;
+    margin-bottom: $spacer;
+    position: relative;
+    width: auto;
+
+    .thumbnail-container {
+      position: relative;
+      min-height: 200px;
+      min-width: 200px;
+    }
+
+    .caption-area {
+      // styling for documents without thumbnails
+      &:first-child {
+        display: block;
+        max-height: 100%;
+        background-color: rgba(0,0,0,0.7) !important;
       }
-      line-height: 17px;
-      background-color: rgba(0,0,0,0.3);
-      text-align: center;
+      @extend .bg-dark;
+      @extend .text-white;
+      display: none;
+      padding: 5px 7px;
+      background-color: rgba(0,0,0,0.5) !important;
       position: absolute;
       bottom: 0;
-      right: 0;
-      left: 0;
-      width: 100%;
-      padding: 5px 7px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      max-height: 75%;
+    }
+
+    .document-counter {
       display: none;
     }
-    &:hover {
-      .caption {
-        display: block;
+
+    .index_title {
+      @extend .h6;
+      a, a:hover, a:visited, a:active {
+        @extend .stretched-link;
+        color: $gray-300
+      }
+    }
+
+    .document-metadata {
+      dt {
+        color: $gray-300;
+      }
+      dt, dd {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        float: none;
+        width: auto;
+        clear: none;
+        text-align: left;
+        margin: 0;
       }
     }
   }

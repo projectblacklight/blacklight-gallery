@@ -1,4 +1,5 @@
-<% # container for all documents in index view -%>
-<div id="documents" class="gallery row <%= blacklight_config.view_config(:gallery).classes || 'row-cols-2 row-cols-md-3' %>">
-  <%= render_gallery_collection documents %>
+<div class="container">
+  <div id="documents" class="<%= (Array(blacklight_config.view_config(document_index_view_type).classes || 'row-cols-2 row-cols-md-3') + ["row documents-#{document_index_view_type}"]).join(' ') %>">
+    <%= render documents, as: :document %>
+  </div>
 </div>
