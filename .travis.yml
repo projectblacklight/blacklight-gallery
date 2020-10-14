@@ -30,8 +30,6 @@ matrix:
       env: "RAILS_VERSION=5.2.4.3"
     - rvm: 2.5.8
       env: "RAILS_VERSION=5.2.4.3"
-    - rvm: 2.4.9
-      env: "RAILS_VERSION=5.2.4.3"
 fast_finish: true
 
 jdk: openjdk11
