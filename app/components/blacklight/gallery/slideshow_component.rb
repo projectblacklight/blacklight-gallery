@@ -4,11 +4,7 @@ module Blacklight
   module Gallery
     class SlideshowComponent < Blacklight::DocumentComponent
       def count
-        @document.response.total
-      end
-
-      def slideshow_tag
-        @view_context.render_slideshow_tag(@document, { alt: '' })
+        @document.response&.total
       end
 
       def render_document_class(*args)
@@ -17,6 +13,27 @@ module Blacklight
 
       def presenter
         @presenter ||= @view_context.document_presenter(@document)
+      end
+
+      def slideshow_tag(image_options = { alt: '' })
+        if view_config.slideshow_method
+          method_name = view_config.slideshow_method
+          @view_context.send(method_name, @document, image_options)
+        elsif view_config.slideshow_field
+          url = slideshow_image_url
+
+          image_tag url, image_options if url.present?
+        elsif presenter.thumbnail.exists?
+          presenter.thumbnail.thumbnail_tag(image_options, url_options.reverse_merge(suppress_link: true))
+        end
+      end
+
+      def slideshow_image_url
+        @document.first(view_config.slideshow_field) if @document.has? view_config.slideshow_field
+      end
+
+      def view_config
+        presenter.thumbnail.view_config
       end
     end
   end
