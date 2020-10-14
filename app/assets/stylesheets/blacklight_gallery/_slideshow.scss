@@ -121,6 +121,7 @@ $gray-dark: #343a40 !default;
 
   .grid {
     display: flex;
+    flex-wrap: wrap;
     $square-thumb-size: 100px;
 
     .document {
