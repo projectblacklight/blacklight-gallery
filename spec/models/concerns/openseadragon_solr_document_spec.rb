@@ -13,7 +13,7 @@ describe Blacklight::Gallery::OpenseadragonSolrDocument do
 
   context 'when not configured for the view' do
     let(:fields) { { some_field: 'data' } }
-    let(:view_config) { double('ViewConfig') }
+    let(:view_config) { double('ViewConfig', tile_source_field: nil) }
     it 'returns nil' do
       expect(subject).to be_nil
     end

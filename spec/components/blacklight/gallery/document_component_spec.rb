@@ -34,6 +34,9 @@ RSpec.describe Blacklight::Gallery::DocumentComponent, type: :component do
     allow(controller).to receive(:blacklight_config).and_return(blacklight_config)
     allow(view_context).to receive(:current_search_session).and_return(nil)
     allow(view_context).to receive(:search_session).and_return({})
+
+    # dumb hack to get our stubbing into the thumbnail component
+    allow(controller).to receive(:view_context).and_return(view_context)
   end
 
   it 'has a thumbnail and caption' do
