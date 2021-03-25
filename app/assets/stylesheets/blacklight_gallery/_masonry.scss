@@ -1,5 +1,7 @@
 .documents-masonry {
   .document {
+    max-width: 25%;
+
     &:hover, &:focus {
       .caption-area {
         display: block;
@@ -14,6 +16,12 @@
       position: relative;
       min-height: 200px;
       min-width: 200px;
+      background-color: $gray-300;
+    }
+
+    .img-thumbnail {
+      padding: 0;
+      border-radius: 0;
     }
 
     .caption-area {
@@ -33,6 +41,7 @@
       overflow-x: hidden;
       overflow-y: scroll;
       max-height: 75%;
+      width: 100%;
     }
 
     .document-counter {
