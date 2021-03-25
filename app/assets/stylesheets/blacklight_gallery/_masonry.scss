@@ -1,5 +1,7 @@
 .documents-masonry {
   .document {
+    max-width: 25%;
+
     &:hover, &:focus {
       .caption-area {
         display: block;
