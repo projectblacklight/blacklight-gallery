@@ -1,19 +1,16 @@
-<%= render(Blacklight::DocumentComponent.new(classes: 'col', component: :div, document: @document, counter: @counter)) do |component| %>
-  <% component.with(:body) do %>
+<%= render(Blacklight::DocumentComponent.new(classes: 'col', component: :div, document: @document, counter: @counter, presenter: @presenter)) do |component| %>
+  <% component.body do %>
     <div class="thumbnail-container">
-      <% # Checking if #thumbnail takes any args before passing image_options. #thumbnail did not take any args in version 7.14.1 and earlier %>
-      <%= method(:thumbnail).arity.zero? ? thumbnail : thumbnail(class: 'img-thumbnail') %>
+      <%= thumbnail %>
 
       <div class="caption-area">
         <div class="caption container">
-          <header class="documentHeader row">
-            <%= content_tag @title_component, class: 'index_title document-title-heading' do %>
-              <%= before_title %><%= title %><%= after_title %>
-            <% end %>
-            <%= actions %>
-          </header>
+          <%= title %>
           <%= content %>
           <%= metadata %>
+          <% metadata_sections.each do |section| %>
+            <%= section %>
+          <% end %>
         </div>
       </div>
     </div>
