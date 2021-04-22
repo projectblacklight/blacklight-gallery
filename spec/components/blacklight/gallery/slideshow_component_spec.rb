@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
-  subject(:component) { described_class.new(document: document, **attr) }
+  subject(:component) { described_class.new(document: document, presenter: presenter, **attr) }
 
   let(:attr) { {} }
   let(:view_context) { controller.view_context }
@@ -16,6 +16,7 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
   end
 
   let(:blacklight_config) { Blacklight::Configuration.new }
+  let(:presenter) { Blacklight::IndexPresenter.new(document, view_context, blacklight_config) }
 
   before do
     allow(view_context).to receive(:blacklight_config).and_return(blacklight_config)

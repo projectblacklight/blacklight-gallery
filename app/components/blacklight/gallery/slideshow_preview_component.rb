@@ -10,10 +10,10 @@ module Blacklight
         @document_counter = document_counter || @counter
       end
 
-      def thumbnail
-        @thumbnail ||
-          (presenter.thumbnail.exists? && presenter.thumbnail.render({ alt: presenter.heading })) ||
-          content_tag(:div, t('.missing_image', scope: [:blacklight_gallery]), class: 'thumbnail thumbnail-placeholder')
+      def before_render
+        thumbnail(presenter.thumbnail.render({ alt: presenter.heading })) if thumbnail.blank? && presenter.thumbnail.exists?
+        thumbnail(content_tag(:div, t('.missing_image', scope: [:blacklight_gallery]), class: 'thumbnail thumbnail-placeholder')) if thumbnail.blank?
+        super
       end
 
       def presenter
