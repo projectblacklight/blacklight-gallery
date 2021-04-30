@@ -1,3 +1,4 @@
-<div id="documents" class="<%= (Array(blacklight_config.view_config(document_index_view_type).classes) + ["documents-#{document_index_view_type}"]).join(' ') %>">
-  <%= render documents, as: :document %>
+<% view_config = local_assigns[:view_config] || blacklight_config&.view_config(document_index_view_type) %>
+<div id="documents" class="<%= (Array(view_config.classes) + ["documents-#{view_config.key}"]).join(' ') %>">
+  <%= render documents, as: :document, view_config: view_config %>
 </div>
