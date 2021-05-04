@@ -24,6 +24,11 @@
   }
 
   .document-metadata {
+    .document-title-heading {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
     dt, dd {
       flex: 0 0 100%;
       max-width: 100%;
