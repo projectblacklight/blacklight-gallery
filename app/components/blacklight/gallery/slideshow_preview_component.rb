@@ -11,9 +11,22 @@ module Blacklight
       end
 
       def before_render
-        thumbnail(presenter.thumbnail.render({ alt: presenter.heading })) if thumbnail.blank? && presenter.thumbnail.exists?
-        thumbnail(content_tag(:div, t('.missing_image', scope: [:blacklight_gallery]), class: 'thumbnail thumbnail-placeholder')) if thumbnail.blank?
+        populate_thumbnail_slot if thumbnail.blank?
         super
+      end
+
+      # populate the thumbnail slot with a value if one wasn't explicitly provided
+      def populate_thumbnail_slot
+        thumbnail_content = presenter.thumbnail.render({ alt: presenter.heading }) if presenter.thumbnail.exists?
+        unless thumbnail_content.present?
+          thumbnail_content = content_tag(
+            :div,
+            t(:missing_image, scope: %i[blacklight_gallery catalog grid_slideshow]),
+            class: 'thumbnail thumbnail-placeholder'
+          )
+        end
+
+        thumbnail(thumbnail_content)
       end
 
       def presenter
