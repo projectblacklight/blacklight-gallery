@@ -19,7 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", '>= 5.1', '< 7'
   spec.add_dependency 'blacklight', '~> 7.17'
-  spec.add_dependency "bootstrap", "~> 4.0"
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency 'sqlite3'
