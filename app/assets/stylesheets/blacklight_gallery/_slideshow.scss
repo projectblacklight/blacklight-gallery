@@ -57,11 +57,16 @@ $gray-dark: #343a40 !default;
 
   .carousel-control {
     position: absolute;
-    top: 40%;
+    top: 0;
     height: 100%;
     width: 50px;
+
     .blacklight-icons {
+      display: block;
+      position: absolute;
       width: 3rem;
+      top: calc(50% - 3rem);
+
       svg {
         height: 3rem;
         width: 3rem;
