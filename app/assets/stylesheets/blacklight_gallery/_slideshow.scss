@@ -85,10 +85,16 @@ $gray-dark: #343a40 !default;
 
   .caption {
     font-size: 1rem;
-    color: $gray-light;
     margin: 10px auto;
     min-width: 200px;
     max-width: 50%;
+    a {
+      color: $gray-light;
+      text-decoration: underline;
+      &:hover, &:focus {
+        color: #ffffff;
+      }
+    }
   }
 
   .counter {

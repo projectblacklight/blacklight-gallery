@@ -21,10 +21,9 @@ module Blacklight
           @view_context.send(method_name, @document, image_options)
         elsif view_config.slideshow_field
           url = slideshow_image_url
-
           image_tag url, image_options if url.present?
         elsif presenter.thumbnail.exists?
-          presenter.thumbnail.thumbnail_tag(image_options, url_options.reverse_merge(suppress_link: true))
+          presenter.thumbnail.thumbnail_tag(image_options, url_options)
         end
       end
 
