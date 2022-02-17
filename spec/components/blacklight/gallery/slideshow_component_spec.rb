@@ -33,11 +33,12 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
     subject { rendered }
 
     context 'with a slideshow method' do
-      let(:blacklight_config) { Blacklight::Configuration.new.tap { 
-        |config| config.index.slideshow_method = :xyz
-        config.track_search_session = false
-        # binding.pry
-      } }
+      let(:blacklight_config) do
+        Blacklight::Configuration.new.tap do |config|
+          config.index.slideshow_method = :xyz
+          config.track_search_session = false
+        end
+      end
 
       it 'calls the provided slideshow method' do
         expect(view_context).to receive_messages(xyz: 'some-slideshow')
@@ -50,11 +51,13 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
       end
     end
 
-    context 'with a field' do
-      let(:blacklight_config) { Blacklight::Configuration.new.tap { |config| 
-        config.index.slideshow_field = :xyz 
-        config.track_search_session = false
-      } }
+    context 'with a slideshow field' do
+      let(:blacklight_config) do
+        Blacklight::Configuration.new.tap do |config|
+          config.index.slideshow_field = :xyz 
+          config.track_search_session = false
+        end
+      end
       let(:document) { SolrDocument.new({ xyz: 'http://example.com/some.jpg', id: 'x' }) }
 
       it { is_expected.to have_selector 'img[src="http://example.com/some.jpg"]' }
@@ -74,10 +77,12 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
     end
 
     context 'falling back to a thumbnail' do
-      let(:blacklight_config) { Blacklight::Configuration.new.tap { |config| 
-        config.index.thumbnail_field = :xyz 
-        config.track_search_session = false
-        } }
+      let(:blacklight_config) do
+        Blacklight::Configuration.new.tap do |config|
+          config.index.thumbnail_field = :xyz 
+          config.track_search_session = false
+        end
+      end
       let(:document) { SolrDocument.new({ xyz: 'http://example.com/thumb.jpg', id: 'x' }) }
 
       it { is_expected.to have_selector 'img[src="http://example.com/thumb.jpg"]' }
