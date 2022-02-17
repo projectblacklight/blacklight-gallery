@@ -20,10 +20,11 @@ module Blacklight
           method_name = view_config.slideshow_method
           @view_context.send(method_name, @document, image_options)
         elsif view_config.slideshow_field
-          url = slideshow_image_url
-          image_tag url, image_options if url.present?
+          return if slideshow_image_url.blank?
+          image = image_tag slideshow_image_url, image_options
+          helpers.link_to_document(@document, image)
         elsif presenter.thumbnail.exists?
-          presenter.thumbnail.thumbnail_tag(image_options, url_options)
+          presenter.thumbnail.thumbnail_tag(image_options)
         end
       end
 
