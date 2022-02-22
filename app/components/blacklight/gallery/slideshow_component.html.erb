@@ -2,7 +2,7 @@
   <div class="frame">
       <%= slideshow_tag %>
       <div class="caption">
-        <%= presenter.heading %>
+        <%= helpers.link_to_document(presenter.document, presenter.heading, counter: @counter) %>
       </div>
 
       <span class="counter">
