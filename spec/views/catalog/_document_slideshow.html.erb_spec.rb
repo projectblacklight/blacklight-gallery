@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "catalog/_document_slideshow.html.erb", :type => :view do
+describe "catalog/_document_slideshow", :type => :view do
   let(:blacklight_config) do
     Blacklight::Configuration.new do |config|
       config.track_search_session = false
