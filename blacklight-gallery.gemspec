@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails", '>= 5.1', '< 8'
-  spec.add_dependency 'blacklight', '~> 7.17'
+  spec.add_dependency 'blacklight', '>= 7.17', '< 9'
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency 'sqlite3'
