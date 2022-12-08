@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency 'sqlite3'
-  spec.add_development_dependency "rspec-rails", "~> 3.1"
+  spec.add_development_dependency "rspec-rails", "~> 6"
   spec.add_development_dependency "rspec-its"
   spec.add_development_dependency "rspec-activemodel-mocks"
   spec.add_development_dependency "rspec-collection_matchers"
@@ -30,6 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "engine_cart", "~> 2.0"
   spec.add_development_dependency "capybara"
   spec.add_development_dependency 'webdrivers'
-  spec.add_development_dependency 'rexml' # pending https://github.com/SeleniumHQ/selenium/issues/9001
   spec.add_development_dependency "selenium-webdriver", '>= 3.13.1'
 end
