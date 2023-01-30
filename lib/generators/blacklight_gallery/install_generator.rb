@@ -5,15 +5,6 @@ module BlacklightGallery
 
     source_root File.expand_path('../templates', __FILE__)
 
-    def assets
-      copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
-      copy_file "blacklight_gallery.js", "app/assets/javascripts/blacklight_gallery.js"
-
-      insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
-        "\n//= require blacklight_gallery"
-      end
-    end
-
     def configuration
       inject_into_file 'app/controllers/catalog_controller.rb', after: "configure_blacklight do |config|" do
         "\n    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent)" \
@@ -34,6 +25,15 @@ module BlacklightGallery
       gem "openseadragon", ">= 0.2.0"
       Bundler.with_clean_env { run 'bundle install' }
       generate 'openseadragon:install'
+    end
+
+    def assets
+      copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
+      copy_file "blacklight_gallery.js", "app/assets/javascripts/blacklight_gallery.js"
+
+      insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
+        "\n//= require blacklight_gallery"
+      end
     end
   end
 end
