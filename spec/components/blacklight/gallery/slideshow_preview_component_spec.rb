@@ -3,7 +3,13 @@
 require 'spec_helper'
 
 RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component do
-  subject(:component) { described_class.new(document: document, document_counter: 5, presenter: presenter, **attr) }
+  subject(:component) do
+    if Blacklight::VERSION > '8'
+      described_class.new(document: presenter, document_counter: 5, **attr)
+    else
+      described_class.new(document: document, document_counter: 5, presenter: presenter, **attr)
+    end
+  end
 
   let(:attr) { {} }
   let(:view_context) { controller.view_context }
@@ -30,7 +36,11 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
   let(:blacklight_config) do
     Blacklight::Configuration.new.tap do |config|
       config.index.thumbnail_field = 'thumbnail_path_ss'
-      config.track_search_session = false
+      if Blacklight::VERSION > '8'
+        config.track_search_session.storage = false
+      else
+        config.track_search_session = false
+      end
     end
   end
 
@@ -38,7 +48,6 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
     let(:document) { SolrDocument.new(id: 'abc', thumbnail_path_ss: 'http://example.com/image.jpg') }
 
     it 'renders the thumbnail' do
-      puts render
       expect(rendered).to have_selector '.thumbnail img[@src="http://example.com/image.jpg"]'
     end
 
