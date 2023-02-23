@@ -1,4 +1,4 @@
-<%= render(Blacklight::DocumentComponent.new(classes: 'col', component: :div, document: @document, counter: @counter, presenter: @presenter)) do |component| %>
+<%= render(Blacklight::DocumentComponent.new(classes: 'col', component: :div, document: @presenter, counter: @counter)) do |component| %>
   <% component.body do %>
     <div class="thumbnail-container">
       <%= thumbnail %>
