@@ -3,7 +3,13 @@
 require 'spec_helper'
 
 RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
-  subject(:component) { described_class.new(document: document, presenter: presenter, **attr) }
+  subject(:component) do
+    if Blacklight::VERSION > '8'
+      described_class.new(document: presenter, **attr)
+    else
+      described_class.new(document: document, presenter: presenter, **attr)
+    end
+  end
 
   let(:attr) { {} }
   let(:view_context) { controller.view_context }
@@ -36,7 +42,11 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
       let(:blacklight_config) do
         Blacklight::Configuration.new.tap do |config|
           config.index.slideshow_method = :xyz
-          config.track_search_session = false
+          if Blacklight::VERSION > '8'
+            config.track_search_session.storage = false
+          else
+            config.track_search_session = false
+          end
         end
       end
 
@@ -55,7 +65,11 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
       let(:blacklight_config) do
         Blacklight::Configuration.new.tap do |config|
           config.index.slideshow_field = :xyz 
-          config.track_search_session = false
+          if Blacklight::VERSION > '8'
+            config.track_search_session.storage = false
+          else
+            config.track_search_session = false
+          end
         end
       end
       let(:document) { SolrDocument.new({ xyz: 'http://example.com/some.jpg', id: 'x' }) }
@@ -70,9 +84,15 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
     end
 
     context 'with no view_config' do
-      let(:blacklight_config) { Blacklight::Configuration.new.tap { |config| 
-        config.track_search_session = false
-      } }
+      let(:blacklight_config) do
+        Blacklight::Configuration.new.tap do |config| 
+          if Blacklight::VERSION > '8'
+            config.track_search_session.storage = false
+          else
+            config.track_search_session = false
+          end
+        end
+      end
       it { is_expected.not_to have_selector 'img' }
     end
 
@@ -80,7 +100,11 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
       let(:blacklight_config) do
         Blacklight::Configuration.new.tap do |config|
           config.index.thumbnail_field = :xyz 
-          config.track_search_session = false
+          if Blacklight::VERSION > '8'
+            config.track_search_session.storage = false
+          else
+            config.track_search_session = false
+          end
         end
       end
       let(:document) { SolrDocument.new({ xyz: 'http://example.com/thumb.jpg', id: 'x' }) }
