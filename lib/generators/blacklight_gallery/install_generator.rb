@@ -7,9 +7,9 @@ module BlacklightGallery
 
     def configuration
       inject_into_file 'app/controllers/catalog_controller.rb', after: "configure_blacklight do |config|" do
-        "\n    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent)" \
-        "\n    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent)" \
-        "\n    config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent)" \
+        "\n    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)" \
+        "\n    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent)" \
+        "\n    config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)" \
         "\n    config.show.tile_source_field = :content_metadata_image_iiif_info_ssm" \
         "\n    config.show.partials.insert(1, :openseadragon)"
       end
