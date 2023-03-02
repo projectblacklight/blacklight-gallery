@@ -1,0 +1,26 @@
+{
+  "name": "blacklight-gallery",
+  "version": "4.0.2-beta.1",
+  "description": "Gallery views for Blacklight search results",
+  "main": "app/assets/javascripts/blacklight_gallery/default.js",
+  "files": [
+    "app/assets/javascripts/blacklight_gallery/*.js",
+    "vendor/assets/javascripts/*.js",
+    "app/assets/stylesheets/blacklight_gallery/*.scss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/projectblacklight/blacklight-gallery.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/projectblacklight/blacklight-gallery/issues"
+  },
+  "homepage": "https://github.com/projectblacklight/blacklight-gallery#readme",
+  "devDependencies": { },
+  "dependencies": {
+    "blacklight-frontend": ">=7.1.0-alpha",
+    "jquery": ">=3.0"
+  }
+}
