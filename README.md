@@ -49,3 +49,11 @@ If you would like to add or remove any particular view either add or remove the 
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Releasing
+
+1. Edit `lib/version.rb` and `package.json` to set the new version
+1. Commit the changes e.g. `git commit -am "Bump version to X.X.X"`
+1. Push release to rubygems `bundle exec rake release`
+1. Push release to NPM `npm publish`
+1. Create a release on github with the tag that was just created: https://github.com/projectblacklight/blacklight-gallery/releases/new
