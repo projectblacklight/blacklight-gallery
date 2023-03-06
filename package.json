@@ -20,7 +20,7 @@
   "homepage": "https://github.com/projectblacklight/blacklight-gallery#readme",
   "devDependencies": { },
   "dependencies": {
-    "blacklight-frontend": ">=7.1.0-alpha",
+    "blacklight-frontend": ">=7.1.0 <9",
     "jquery": ">=3.0"
   }
 }
