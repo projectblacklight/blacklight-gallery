@@ -29,6 +29,7 @@ module BlacklightGallery
 
     def assets
       copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
+      append_to_file 'app/assets/config/manifest.js', "\n//= link blacklight_gallery/manifest.js"
       copy_file "blacklight_gallery.js", "app/assets/javascripts/blacklight_gallery.js"
 
       insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
