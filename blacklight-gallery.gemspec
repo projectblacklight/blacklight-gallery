@@ -29,6 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "solr_wrapper"
   spec.add_development_dependency "engine_cart", "~> 2.0"
   spec.add_development_dependency "capybara"
-  spec.add_development_dependency 'webdrivers'
   spec.add_development_dependency "selenium-webdriver", '>= 3.13.1'
 end
