@@ -25,8 +25,7 @@ module Blacklight
             class: 'thumbnail thumbnail-placeholder'
           )
         end
-
-        thumbnail(thumbnail_content)
+        with_thumbnail(thumbnail_content)
       end
 
       def presenter

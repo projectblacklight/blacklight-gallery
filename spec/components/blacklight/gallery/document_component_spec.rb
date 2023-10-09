@@ -12,7 +12,7 @@ RSpec.describe Blacklight::Gallery::DocumentComponent, type: :component do
   end
 
   let(:attr) { {} }
-  let(:view_context) { controller.view_context }
+  let(:view_context) { vc_test_controller.view_context }
   let(:render) do
     component.render_in(view_context)
   end
@@ -43,13 +43,13 @@ RSpec.describe Blacklight::Gallery::DocumentComponent, type: :component do
   end
 
   before do
-    allow(controller).to receive(:blacklight_config).and_return(blacklight_config)
+    allow(vc_test_controller).to receive(:blacklight_config).and_return(blacklight_config)
     allow(view_context).to receive(:current_search_session).and_return(nil)
     allow(view_context).to receive(:search_session).and_return({})
     allow(view_context).to receive(:blacklight_config).and_return(blacklight_config)
 
     # dumb hack to get our stubbing into the thumbnail component
-    allow(controller).to receive(:view_context).and_return(view_context)
+    allow(vc_test_controller).to receive(:view_context).and_return(view_context)
   end
 
   it 'has a thumbnail and caption' do

@@ -3,7 +3,7 @@
   Blacklight::DocumentComponent.new(classes: 'col', component: :div, document: @document, presenter: @presenter, counter: @counter)
 %> 
 <%= render(component) do |component| %>
-  <% component.body do %>
+  <% component.with_body do %>
     <div class="thumbnail-container">
       <%= thumbnail %>
 

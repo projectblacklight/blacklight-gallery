@@ -4,7 +4,7 @@ module Blacklight
   module Gallery
     class DocumentComponent < Blacklight::DocumentComponent
       def before_render
-        thumbnail(image_options: { class: 'img-thumbnail' }) unless thumbnail.present?
+        with_thumbnail(image_options: { class: 'img-thumbnail' }) unless thumbnail.present?
         super
       end
 

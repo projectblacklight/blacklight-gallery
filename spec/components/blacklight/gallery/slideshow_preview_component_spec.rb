@@ -12,7 +12,7 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
   end
 
   let(:attr) { {} }
-  let(:view_context) { controller.view_context }
+  let(:view_context) { vc_test_controller.view_context }
   let(:render) do
     component.render_in(view_context)
   end
@@ -29,8 +29,8 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
     allow(view_context).to receive(:current_search_session).and_return(nil)
     allow(view_context).to receive(:search_session).and_return({})
 
-    # dumb hack to get our stubbing into the thumbnail component
-    allow(controller).to receive(:view_context).and_return(view_context)
+    # Every call to view_context returns a different object. This ensures it stays stable.
+    allow(vc_test_controller).to receive(:view_context).and_return(view_context)
   end
 
   let(:blacklight_config) do
