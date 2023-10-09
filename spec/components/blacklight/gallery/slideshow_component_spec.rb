@@ -12,7 +12,7 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
   end
 
   let(:attr) { {} }
-  let(:view_context) { controller.view_context }
+  let(:view_context) { vc_test_controller.view_context }
   let(:render) do
     component.render_in(view_context)
   end
