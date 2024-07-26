@@ -4,6 +4,8 @@
 %> 
 <%= render(component) do |component| %>
   <% component.with_body do %>
-    <%= @view_context.link_to_document(@document, thumbnail, class: 'thumbnail', data: { 'context-href': nil, 'slide-to': @document_counter, toggle: "modal", target: "#slideshow-modal" }) %>
+    <%= @view_context.link_to_document(@document, thumbnail, class: 'thumbnail',
+                                       data: { 'context-href': nil, 'slide-to': @document_counter, 'bs-slide-to': @document_counter,
+                                       toggle: "modal", 'bs-toggle': "modal", target: "#slideshow-modal", 'bs-target': "#slideshow-modal" }) %>
   <% end %>
 <% end %>

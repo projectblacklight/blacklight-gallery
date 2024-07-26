@@ -30,8 +30,9 @@ RSpec.describe "catalog/_document_slideshow", :type => :view do
   it 'has a modal' do
     render 'catalog/document_slideshow', view_config: view_config
     expect(rendered).to have_selector '#slideshow-modal'
-    expect(rendered).to have_selector '[data-slide="prev"]'
-    expect(rendered).to have_selector '[data-slide="next"]'
-    expect(rendered).to have_selector '[data-slide-to="0"][data-toggle="modal"][data-target="#slideshow-modal"]'
+    expect(rendered).to have_selector '[data-slide="prev"][data-bs-slide="prev"]'
+    expect(rendered).to have_selector '[data-slide="next"][data-bs-slide="next"]'
+    expect(rendered).to have_selector '[data-slide-to="0"][data-bs-slide-to="0"][data-toggle="modal"]' \
+                                      '[data-bs-toggle="modal"][data-target="#slideshow-modal"]'
   end
 end
