@@ -84,10 +84,12 @@
         _this.play();
       });
 
-      $(document).on('click', '[data-slide], [data-slide-to]', function(e) {
+      $(document).on('click', '[data-slide], [data-bs-slide], [data-slide-to], [data-bs-slide-to]', function(e) {
         e.preventDefault();
 
-        pos = parseInt($(this).attr('data-slide-to'), 10) || $(this).attr('data-slide');
+        pos = parseInt($(this).attr('data-slide-to') || $(this).attr('data-bs-slide-to'), 10) ||
+                $(this).attr('data-slide') ||
+                $(this).attr('data-bs-slide');
 
         if (pos === 'next' || pos === 'prev') _this.pause();
         _this.to(pos);
