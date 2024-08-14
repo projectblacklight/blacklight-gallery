@@ -35,6 +35,24 @@ module Blacklight
       def render_document_class(*args)
         @view_context.render_document_class(*args)
       end
+
+      def link_to_document
+        helpers.link_to_document(@document, thumbnail, class: 'thumbnail', data: data_attributes)
+      end
+
+      def data_attributes
+        # 'context-href': nil is for Blacklight < 7.38, :context_href is for those after 7.38
+        {
+          'context-href': nil,
+          context_href: nil,
+          'slide-to': @document_counter,
+          'bs-slide-to': @document_counter,
+          toggle: "modal",
+          'bs-toggle': "modal",
+          target: "#slideshow-modal",
+          'bs-target': "#slideshow-modal"
+        }
+      end
     end
   end
 end
