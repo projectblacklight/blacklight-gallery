@@ -21,12 +21,12 @@
     clear: left;
   }
 
-  .document-metadata {
-    .document-title-heading {
-      padding-left: 0;
-      padding-right: 0;
-    }
+  .document-title-heading {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
+  .document-metadata {
     dt, dd {
       flex: 0 0 100%;
       max-width: 100%;
