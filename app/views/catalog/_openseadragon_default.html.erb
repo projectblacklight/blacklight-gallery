@@ -1,5 +1,6 @@
 <%
-  image = document.to_openseadragon(blacklight_config.view_config(:show))
+  view_config = local_assigns[:view_config] || blacklight_config&.view_config(document_index_view_type)
+  image = document.to_openseadragon(view_config)
   id_prefix = osd_html_id_prefix
 %>
 <%
