@@ -14,9 +14,10 @@ module Blacklight
     end
 
     def osd_container_class
-      "col-md-6"
+      'col-md-6'
     end
 
+    # @deprecated
     def osd_html_id_prefix
       "osd-#{Blacklight::OpenseadragonHelper.mint_id}".to_param
     end
