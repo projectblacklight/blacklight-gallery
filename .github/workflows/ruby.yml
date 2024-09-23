@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
@@ -13,42 +13,45 @@ jobs:
     name: test (ruby ${{ matrix.ruby }} / rails ${{ matrix.rails_version }} / blacklight ${{ matrix.blacklight_version }} ${{ matrix.additional_name }})
     strategy:
       matrix:
-        ruby: [2.7, '3.0']
-        rails_version: ['6.1.7', '7.0.4']
-        blacklight_version: ['~> 7.0']
+        ruby: ["3.2", "3.3"]
+        rails_version: ["7.0.4"]
+        blacklight_version: ["~> 7.0"]
         experimental: [false]
-        additional_engine_cart_rails_options: ['']
-        additional_name: ['']
+        additional_engine_cart_rails_options: [""]
+        additional_name: [""]
         include:
-        - ruby: '3.1'
-          rails_version: '7.0.4'
-          blacklight_version: '~> 7.0'
-          experimental: false
-        - ruby: '3.2'
-          rails_version: '7.0.4'
-          blacklight_version: '~> 8.0'
-          experimental: false
-        - ruby: '3.2'
-          rails_version: '7.0.4'
-          blacklight_version: 'github'
-          experimental: true
-        - ruby: '3.2'
-          rails_version: '7.0.4'
-          blacklight_version: 'github'
-          experimental: true
-          additional_engine_cart_rails_options: -a propshaft
-          additional_name: '/ Propshaft'
+          - ruby: "3.1"
+            rails_version: 6.1.7
+            blacklight_version: "~> 7.0"
+            experimental: false
+            additional_name: Rails 6.1, Ruby 3.1
+          - ruby: "3.2"
+            rails_version: "7.0.4"
+            blacklight_version: "~> 8.0"
+            experimental: false
+            additional_name: Blacklight 8
+          - ruby: "3.2"
+            rails_version: "7.0.4"
+            blacklight_version: "github"
+            experimental: true
+            additional_name: Blacklight main branch
+          - ruby: "3.2"
+            rails_version: "7.0.4"
+            blacklight_version: "github"
+            experimental: true
+            additional_engine_cart_rails_options: -a propshaft
+            additional_name: "/ Propshaft"
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
       BLACKLIGHT_VERSION: ${{ matrix.blacklight_version }}
       ENGINE_CART_RAILS_OPTIONS: "--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test ${{ matrix.additional_engine_cart_rails_options }}"
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Ruby ${{ matrix.ruby }}
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - name: Install dependencies with Rails ${{ matrix.rails_version }}
-      run: bundle install
-    - name: Run tests
-      run: bundle exec rake
+      - uses: actions/checkout@v4
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install dependencies with Rails ${{ matrix.rails_version }}
+        run: bundle install
+      - name: Run tests
+        run: bundle exec rake

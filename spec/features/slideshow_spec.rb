@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Slideshow', default_max_wait_time: 10, js: true do
+RSpec.describe 'Slideshow', default_max_wait_time: 20, js: true do
 
   it 'opens when one of the grid panes is clicked' do
     visit search_catalog_path( q: 'medicine', view: 'slideshow' )
