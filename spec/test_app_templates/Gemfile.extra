@@ -3,3 +3,7 @@ if ENV['BLACKLIGHT_VERSION'] == 'github'
 elsif ENV['BLACKLIGHT_VERSION'] && !ENV['BLACKLIGHT_VERSION'].empty?
   gem 'blacklight', ENV['BLACKLIGHT_VERSION']
 end
+
+unless ENV['VIEW_COMPONENT_VERSION'].to_s == ""
+  gem 'view_component', ENV.fetch('VIEW_COMPONENT_VERSION')
+end

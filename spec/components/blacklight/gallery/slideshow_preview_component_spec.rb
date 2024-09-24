@@ -51,6 +51,14 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
       expect(rendered).to have_selector '.thumbnail img[@src="http://example.com/image.jpg"]'
     end
 
+    it 'renders the correct slide number' do
+      if VIEW_COMPONENT_VERSION < 3
+        expect(rendered).to have_css '[data-slide-to=\"4\"][data-bs-slide-to=\"4\"]'
+      else
+        expect(rendered).to have_css '[data-slide-to=\"5\"][data-bs-slide-to=\"5\"]'
+      end
+    end
+
     context 'when the presenter returns nothing' do
       let(:document) { SolrDocument.new(id: 'abc') }
 
