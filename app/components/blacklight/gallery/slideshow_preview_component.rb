@@ -7,7 +7,8 @@ module Blacklight
 
       def initialize(document:, document_counter: nil, **args)
         super(document: document, document_counter: document_counter, **args)
-        @document_counter = document_counter || @counter
+
+        @slide_to = @counter - 1
       end
 
       def before_render
@@ -45,8 +46,8 @@ module Blacklight
         {
           'context-href': nil,
           context_href: nil,
-          'slide-to': @document_counter,
-          'bs-slide-to': @document_counter,
+          'slide-to': @slide_to,
+          'bs-slide-to': @slide_to,
           toggle: "modal",
           'bs-toggle': "modal",
           target: "#slideshow-modal",
