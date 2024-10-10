@@ -2,18 +2,18 @@
   <div class="osd-toolbar row">
     <div class="col-md-6 pagination">
       <% if count > 1 %>
-        <% osd_config = osd_config_referencestrip.merge(osd_config) %>
-          <a id="<%= id_prefix %>-previous"><%= render Blacklight::Gallery::Icons::ChevronLeftComponent.new %></a>
-          <span id="<%= id_prefix %>-page">1</span> of <%= count %>
-          <a id="<%= id_prefix %>-next"><%= render Blacklight::Gallery::Icons::ChevronRightComponent.new  %></a>
+        <% multi_page_osd_config = osd_config_referencestrip.merge(osd_config) %>
+        <a id="<%= @id_prefix %>-previous"><%= render Blacklight::Gallery::Icons::ChevronLeftComponent.new %></a>
+        <span id="<%= @id_prefix %>-page">1</span>&nbsp; of <%= count %>
+        <a id="<%= @id_prefix %>-next"><%= render Blacklight::Gallery::Icons::ChevronRightComponent.new  %></a>
       <% end %>
     </div>
     <div class="col-md-6 controls">
-      <a id="<%= id_prefix %>-zoom-in"><%= render Blacklight::Gallery::Icons::AddCircleComponent.new %></a>
-      <a id="<%= id_prefix %>-zoom-out"><%= render Blacklight::Gallery::Icons::RemoveCircleComponent.new %></a>
-      <a id="<%= id_prefix %>-home"><%= render Blacklight::Gallery::Icons::ResizeSmallComponent.new %></a>
-      <a id="<%= id_prefix %>-full-page"><%= render Blacklight::Gallery::Icons::CustomFullscreenComponent.new %></a>
+      <a id="<%= @id_prefix %>-zoom-in"><%= render Blacklight::Gallery::Icons::AddCircleComponent.new %></a>
+      <a id="<%= @id_prefix %>-zoom-out"><%= render Blacklight::Gallery::Icons::RemoveCircleComponent.new %></a>
+      <a id="<%= @id_prefix %>-home"><%= render Blacklight::Gallery::Icons::ResizeSmallComponent.new %></a>
+      <a id="<%= @id_prefix %>-full-page"><%= render Blacklight::Gallery::Icons::CustomFullscreenComponent.new %></a>
     </div>
   </div>
-  <%= helpers.openseadragon_picture_tag image, class: 'osd-image row', data: { openseadragon: osd_config } %>
+  <%= helpers.openseadragon_picture_tag image, class: 'osd-image row', data: { openseadragon: multi_page_osd_config ? multi_page_osd_config : osd_config } %>
 </div>
