@@ -46,9 +46,8 @@ module Blacklight
       def osd_config_referencestrip
         {
           showReferenceStrip: true,
-          referenceStripPosition: 'OUTSIDE',
+          sequenceMode: true,
           referenceStripScroll: 'vertical',
-          referenceStripWidth: 100,
           referenceStripBackgroundColor: 'transparent'
         }
       end
