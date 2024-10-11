@@ -12,6 +12,7 @@ module Blacklight
         @presenter = presenter
         @view_config = view_config
         @classes = classes
+        @id_prefix = id_prefix
       end
 
       def image
@@ -33,21 +34,20 @@ module Blacklight
       def osd_config
         {
           crossOriginPolicy: false,
-          zoomInButton: "#{id_prefix}-zoom-in",
-          zoomOutButton: "#{id_prefix}-zoom-out",
-          homeButton: "#{id_prefix}-home",
-          fullPageButton: "#{id_prefix}-full-page",
-          nextButton: "#{id_prefix}-next",
-          previousButton: "#{id_prefix}-previous"
+          zoomInButton: "#{@id_prefix}-zoom-in",
+          zoomOutButton: "#{@id_prefix}-zoom-out",
+          homeButton: "#{@id_prefix}-home",
+          fullPageButton: "#{@id_prefix}-full-page",
+          nextButton: "#{@id_prefix}-next",
+          previousButton: "#{@id_prefix}-previous"
         }
       end
 
       def osd_config_referencestrip
         {
           showReferenceStrip: true,
-          referenceStripPosition: 'OUTSIDE',
+          sequenceMode: true,
           referenceStripScroll: 'vertical',
-          referenceStripWidth: 100,
           referenceStripBackgroundColor: 'transparent'
         }
       end
