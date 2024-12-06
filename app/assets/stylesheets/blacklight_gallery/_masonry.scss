@@ -4,9 +4,14 @@
     padding: 0;
     margin: 0;
 
-    &:hover, &:focus {
+    &:hover, &:focus, &:focus-within {
       .caption-area {
-        display: block;
+        left: auto;
+        width: auto;
+        height: auto;
+        clip: unset;
+        max-height: 75%;
+        overflow-y: scroll;
       }
     }
 
@@ -34,14 +39,14 @@
       }
       @extend .bg-dark;
       @extend .text-white;
-      display: none;
       padding: 5px 7px;
       background-color: rgba(0,0,0,0.5) !important;
       position: absolute;
       bottom: 0;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      max-height: 75%;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
     }
 
     .document-counter {
