@@ -20,6 +20,10 @@ task :fixtures => ['engine_cart:generate'] do
   end
 end
 
+rails_options = ENV.fetch('ENGINE_CART_RAILS_OPTIONS', '')
+rails_options = "#{rails_options} --css bootstrap" unless rails_options.match?(/--css/)
+ENV['ENGINE_CART_RAILS_OPTIONS'] = rails_options
+
 desc "Execute Continuous Integration build"
 task :ci => ['engine_cart:generate'] do
 
