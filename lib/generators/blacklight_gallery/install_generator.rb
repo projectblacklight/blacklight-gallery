@@ -11,6 +11,7 @@ module BlacklightGallery
         "\n    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent)" \
         "\n    config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)" \
         "\n    config.show.tile_source_field = :content_metadata_image_iiif_info_ssm" \
+        "\n    config.show.partials ||= []" \
         "\n    config.show.partials.insert(1, :openseadragon)"
       end
     end
