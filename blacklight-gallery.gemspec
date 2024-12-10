@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rails", '>= 6.1', '< 8'
+  spec.add_dependency "rails", '>= 6.1', '< 9'
   spec.add_dependency 'blacklight', '>= 7.17', '< 9'
 
   spec.add_development_dependency "rake"

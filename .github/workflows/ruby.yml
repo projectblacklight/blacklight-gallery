@@ -46,12 +46,13 @@ jobs:
             rails_version: "8.0.0"
             blacklight_version: "~> 8.0"
             experimental: false
+            additional_engine_cart_rails_options: --css bootstrap
             additional_name: "/ Blackight 8 / Rails 8"
           - ruby: "3.3"
             rails_version: "7.2.2"
             blacklight_version: "github"
             experimental: true
-            additional_engine_cart_rails_options: -a propshaft
+            additional_engine_cart_rails_options: -a propshaft --css bootstrap
             additional_name: "/ Blacklight main branch with Propshaft"
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
