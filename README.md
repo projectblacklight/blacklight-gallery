@@ -19,9 +19,17 @@ Or install it yourself as:
 
 ## Usage
 
-Run the gallery generator:
+Run the gallery generator for Sprockets:
 
     $ rails g blacklight_gallery:install
+
+Or for node based bundlers add `blacklight-gallery` as a dependency and add this to your entrypoint:
+```js
+import 'blacklight-gallery/vendor/assets/javascripts/imagesloaded.min.js'
+import 'blacklight-gallery/vendor/assets/javascripts/masonry.min.js'
+import 'blacklight-gallery/app/assets/javascripts/blacklight_gallery/slideshow'
+import 'blacklight-gallery/app/assets/javascripts/blacklight_gallery/masonry'
+```
 
 ## Available Views
 If you would like to add or remove any particular view either add or remove the following configurations from your Blacklight controller.
