@@ -1,6 +1,6 @@
 {
   "name": "blacklight-gallery",
-  "version": "4.6.3",
+  "version": "4.6.4",
   "description": "Gallery views for Blacklight search results",
   "main": "app/assets/javascripts/blacklight_gallery/default.js",
   "files": [
