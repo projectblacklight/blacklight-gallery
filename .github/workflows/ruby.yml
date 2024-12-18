@@ -19,7 +19,6 @@ jobs:
         experimental: [false]
         additional_engine_cart_rails_options: [""]
         additional_name: [""]
-        view_component_version: ["~> 3.12"]
         include:
           - ruby: "3.1"
             rails_version: 6.1.7
@@ -36,12 +35,6 @@ jobs:
             blacklight_version: "github"
             experimental: true
             additional_name: Blacklight main branch
-          - ruby: "3.2"
-            rails_version: "7.0.4"
-            blacklight_version: "~> 7.0"
-            experimental: false
-            view_component_version: "~> 2.83"
-            additional_name: "/ ViewComponent 2"
           - ruby: "3.3"
             rails_version: "8.0.0"
             blacklight_version: "~> 8.0"
@@ -57,7 +50,6 @@ jobs:
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
       BLACKLIGHT_VERSION: ${{ matrix.blacklight_version }}
-      VIEW_COMPONENT_VERSION: ${{ matrix.view_component_version }}
       ENGINE_CART_RAILS_OPTIONS: "--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test ${{ matrix.additional_engine_cart_rails_options }}"
     steps:
       - uses: actions/checkout@v4

@@ -52,11 +52,7 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
     end
 
     it 'renders the correct slide number' do
-      if VIEW_COMPONENT_VERSION < 3
-        expect(rendered).to have_css '[data-slide-to=\"4\"][data-bs-slide-to=\"4\"]'
-      else
-        expect(rendered).to have_css '[data-slide-to=\"5\"][data-bs-slide-to=\"5\"]'
-      end
+      expect(rendered).to have_css '[data-slide-to=\"5\"][data-bs-slide-to=\"5\"]'
     end
 
     context 'when the presenter returns nothing' do
