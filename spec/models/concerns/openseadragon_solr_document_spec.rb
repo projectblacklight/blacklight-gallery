@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Blacklight::Gallery::OpenseadragonSolrDocument do
+RSpec.describe Blacklight::Gallery::OpenseadragonSolrDocument do
   subject { SolrDocument.new(fields).to_openseadragon(view_config) }
 
   context 'when configured for the view' do
