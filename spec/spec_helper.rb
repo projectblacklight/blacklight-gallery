@@ -18,5 +18,6 @@ require 'blacklight/gallery'
 
 RSpec.configure do |c|
   c.infer_spec_type_from_file_location!
+  c.disable_monkey_patching!
   c.include ViewComponent::TestHelpers, type: :component
 end

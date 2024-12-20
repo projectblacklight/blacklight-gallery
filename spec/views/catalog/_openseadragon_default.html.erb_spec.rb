@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "catalog/openseadragon_default" do
+RSpec.describe "catalog/openseadragon_default" do
   let(:document) { SolrDocument.new }
   let(:blacklight_config) { Blacklight::Configuration.new }
   let(:p) { "catalog/openseadragon_default" }

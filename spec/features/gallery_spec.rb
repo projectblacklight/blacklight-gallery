@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe "Gallery view", :type => :feature do
+RSpec.describe "Gallery view" do
   before { visit search_catalog_path :q => 'medicine', :view => 'gallery' }
 
   it "displays results in a galley view" do
