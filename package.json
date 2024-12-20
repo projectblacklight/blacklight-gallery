@@ -1,6 +1,6 @@
 {
   "name": "blacklight-gallery",
-  "version": "4.6.4",
+  "version": "4.7.0",
   "description": "Gallery views for Blacklight search results",
   "main": "app/assets/javascripts/blacklight_gallery/default.js",
   "files": [
@@ -18,7 +18,7 @@
     "url": "https://github.com/projectblacklight/blacklight-gallery/issues"
   },
   "homepage": "https://github.com/projectblacklight/blacklight-gallery#readme",
-  "devDependencies": { },
+  "devDependencies": {},
   "dependencies": {
     "blacklight-frontend": ">=7.1.0 <9",
     "jquery": ">=3.0"
