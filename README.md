@@ -25,7 +25,7 @@ Run the gallery generator for Sprockets:
 
 Or for node based bundlers add `blacklight-gallery masonry-layout@v4` as a dependencies and add this to your entrypoint:
 ```js
-import 'blacklight-gallery/vendor/assets/javascripts/imagesloaded.min.js'
+import 'blacklight-gallery/vendor/assets/javascripts/imagesloaded.pkgd.js'
 import 'blacklight-gallery/app/assets/javascripts/blacklight_gallery/slideshow'
 import 'blacklight-gallery/app/assets/javascripts/blacklight_gallery/masonry'
 ```
