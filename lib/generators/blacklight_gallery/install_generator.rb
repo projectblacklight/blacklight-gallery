@@ -23,7 +23,7 @@ module BlacklightGallery
     end
 
     def add_openseadragon
-      gem "openseadragon", ">= 0.2.0"
+      gem "openseadragon", "~> 1.0"
       Bundler.with_clean_env { run 'bundle install' }
       generate 'openseadragon:install'
     end
@@ -34,10 +34,9 @@ module BlacklightGallery
       return unless defined?(Sprockets)
 
       append_to_file 'app/assets/config/manifest.js', "\n//= link blacklight_gallery/manifest.js\n"
-      copy_file "blacklight_gallery.js", "app/assets/javascripts/blacklight_gallery.js"
 
       insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
-        "\n//= require blacklight_gallery"
+        "\n//= require blacklight_gallery/blacklight-gallery"
       end
     end
   end

@@ -2,9 +2,18 @@
   "name": "blacklight-gallery",
   "version": "4.7.0",
   "description": "Gallery views for Blacklight search results",
-  "main": "app/assets/javascripts/blacklight_gallery/default.js",
+  "exports": {
+    ".": "./app/javascript/blacklight-gallery/index.js",
+    "./*": "./app/javascript/blacklight-gallery/*.js"
+  },
+  "main": "app/assets/javascripts/blacklight_gallery/blacklight-gallery.esm.js",
+  "type": "module",
+  "scripts": {
+    "prepare": "rollup --config rollup.config.js --sourcemap && ESM=true rollup --config rollup.config.js --sourcemap"
+  },
   "files": [
     "app/assets/javascripts/blacklight_gallery/*.js",
+    "app/javascript/blacklight-gallery/*.js",
     "vendor/assets/javascripts/*.js",
     "app/assets/stylesheets/blacklight_gallery/*.scss"
   ],
@@ -18,9 +27,13 @@
     "url": "https://github.com/projectblacklight/blacklight-gallery/issues"
   },
   "homepage": "https://github.com/projectblacklight/blacklight-gallery#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "rollup": "^4.24.0",
+    "rollup-plugin-includepaths": "^0.2.4"
+  },
   "dependencies": {
     "blacklight-frontend": ">=7.1.0 <9",
+    "openseadragon-rails": "^1.0.11",
     "jquery": ">=3.0"
   }
 }
