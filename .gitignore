@@ -4,6 +4,7 @@
 .config
 .yardoc
 Gemfile.lock
+package-lock.json
 InstalledFiles
 _yardoc
 coverage
@@ -18,3 +19,4 @@ tmp
 jetty
 spec/internal
 .internal_test_app
+node_modules

@@ -1,3 +1,5 @@
+import Blacklight from 'blacklight-frontend'
+
 (function($){
   $.fn.BlacklightMasonry = function() {
     var container = this;
