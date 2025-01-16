@@ -1,4 +1,4 @@
-import Blacklight$1 from 'blacklight-frontend';
+import Blacklight from 'blacklight-frontend';
 
 /*!
  * imagesLoaded PACKAGED v5.0.0
@@ -592,7 +592,7 @@ Blacklight.onLoad(function() {
   $.fn.BlacklightMasonry.options = { gutter: 8 };
 })(jQuery);
 
-Blacklight$1.onLoad(function() {
+Blacklight.onLoad(function() {
   $('.documents-masonry').BlacklightMasonry();
 });
 //# sourceMappingURL=blacklight-gallery.esm.js.map

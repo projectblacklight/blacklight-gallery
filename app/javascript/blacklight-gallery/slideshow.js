@@ -1,3 +1,5 @@
+import Blacklight from 'blacklight-frontend'
+
 (function($){
   var Slideshow = function (element, options) {
     this.$element = $(element);
