@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('blacklight-frontend')) :
   typeof define === 'function' && define.amd ? define(['blacklight-frontend'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Blacklight));
-})(this, (function (Blacklight$1) { 'use strict';
+})(this, (function (Blacklight) { 'use strict';
 
   /*!
    * imagesLoaded PACKAGED v5.0.0
@@ -596,7 +596,7 @@
     $.fn.BlacklightMasonry.options = { gutter: 8 };
   })(jQuery);
 
-  Blacklight$1.onLoad(function() {
+  Blacklight.onLoad(function() {
     $('.documents-masonry').BlacklightMasonry();
   });
 
