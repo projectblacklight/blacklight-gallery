@@ -544,7 +544,7 @@
         $(document).on('click', '[data-slide], [data-bs-slide], [data-slide-to], [data-bs-slide-to]', function(e) {
           e.preventDefault();
 
-          pos = parseInt($(this).attr('data-slide-to') || $(this).attr('data-bs-slide-to'), 10) ||
+          const pos = parseInt($(this).attr('data-slide-to') || $(this).attr('data-bs-slide-to'), 10) ||
                   $(this).attr('data-slide') ||
                   $(this).attr('data-bs-slide');
 
