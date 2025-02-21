@@ -24,7 +24,7 @@ module BlacklightGallery
 
     def add_openseadragon
       gem "openseadragon", "~> 1.0"
-      Bundler.with_clean_env { run 'bundle install' }
+      Bundler.with_unbundled_env { run 'bundle install' }
       generate 'openseadragon:install'
     end
 
