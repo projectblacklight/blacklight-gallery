@@ -14,20 +14,20 @@ jobs:
     strategy:
       matrix:
         ruby: ["3.2", "3.3"]
-        rails_version: ["7.2.2"]
+        rails_version: ["8.0.1"]
         blacklight_version: ["~> 7.0"]
         experimental: [false]
         additional_engine_cart_rails_options: [""]
         additional_name: [""]
         include:
           - ruby: "3.3"
-            rails_version: "8.0.0"
+            rails_version: "7.2.2.1"
             blacklight_version: "~> 8.0"
             experimental: false
             additional_engine_cart_rails_options: --css bootstrap
             additional_name: "/ Blackight 8 / Rails 8"
           - ruby: "3.3"
-            rails_version: "7.2.2"
+            rails_version: "7.2.2.1"
             blacklight_version: "github"
             experimental: true
             additional_engine_cart_rails_options: -a propshaft --css bootstrap
