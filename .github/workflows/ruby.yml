@@ -13,7 +13,7 @@ jobs:
     name: test (ruby ${{ matrix.ruby }} / rails ${{ matrix.rails_version }} / blacklight ${{ matrix.blacklight_version }} ${{ matrix.additional_name }})
     strategy:
       matrix:
-        ruby: ["3.2", "3.3"]
+        ruby: ["3.2", "3.3", "3.4"]
         rails_version: ["8.0.1"]
         blacklight_version: ["~> 8.0"]
         experimental: [false]
