@@ -13,29 +13,35 @@ jobs:
     name: test (ruby ${{ matrix.ruby }} / rails ${{ matrix.rails_version }} / blacklight ${{ matrix.blacklight_version }} ${{ matrix.additional_name }})
     strategy:
       matrix:
-        ruby: ["3.2", "3.3", "3.4"]
+        ruby: ["3.4"]
         rails_version: ["8.0.1"]
         blacklight_version: ["~> 8.0"]
         experimental: [false]
-        additional_engine_cart_rails_options: [""]
-        additional_name: [""]
+        additional_engine_cart_rails_options: ["--css bootstrap"]
+        additional_name: ["/ importmap"]
         include:
-          - ruby: "3.3"
+          - ruby: "3.4"
             rails_version: "7.2.2.1"
             blacklight_version: "~> 7.0"
             experimental: false
-            additional_engine_cart_rails_options: --css bootstrap
-            additional_name: "/ Blackight 8 / Rails 8"
-          - ruby: "3.3"
+            additional_engine_cart_rails_options: ""
+            additional_name: "/ sprockets"
+          - ruby: "3.4"
             rails_version: "7.2.2.1"
             blacklight_version: "github"
             experimental: true
             additional_engine_cart_rails_options: -a propshaft --css bootstrap
             additional_name: "/ Blacklight main branch with Propshaft"
+          - ruby: "3.4"
+            rails_version: "8.0.1"
+            blacklight_version: "github"
+            experimental: true
+            additional_engine_cart_rails_options: "--css bootstrap"
+            additional_name: "/ Blacklight main"
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
       BLACKLIGHT_VERSION: ${{ matrix.blacklight_version }}
-      ENGINE_CART_RAILS_OPTIONS: "--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test --css bootstrap ${{ matrix.additional_engine_cart_rails_options }}"
+      ENGINE_CART_RAILS_OPTIONS: "--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test ${{ matrix.additional_engine_cart_rails_options }}"
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby ${{ matrix.ruby }}
