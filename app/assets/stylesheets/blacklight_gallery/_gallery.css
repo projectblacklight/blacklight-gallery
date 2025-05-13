@@ -1,0 +1,46 @@
+.documents-gallery {
+  .document {
+    border-bottom: none;
+    display: flex;
+    min-height: 250px;
+  }
+
+  .index_title {
+    /* this is more complicated that .caption - the class is used in core blacklight */
+  }
+
+  .document-counter {
+    display: none;
+  }
+
+  .index-document-functions {
+    clear: left;
+  }
+
+  .document-title-heading {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .document-metadata {
+    dt,
+    dd {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      float: none;
+      width: auto;
+      clear: none;
+      text-align: left;
+      margin: 0;
+    }
+  }
+}
+
+.documents-gallery,
+.documents-masonry,
+.documents-slideshow {
+  padding-bottom: 1rem;
+  border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+}
