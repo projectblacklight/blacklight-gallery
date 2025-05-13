@@ -6,7 +6,7 @@
   }
 
   .index_title {
-    /* this is more complicated that .caption - the class is used in core blacklight */
+    font-size: 1.25rem;
   }
 
   .document-counter {
