@@ -112,9 +112,9 @@ import 'blacklight-gallery'
 ```
 
 ### Start Rails Server
-- Run the rake task to start the rails server for the internal test app
+- Run the rake task to start the rails server for the internal test app from the blacklight gallery root directory
 ```
-bundle exec server
+bundle exec rake server
 ```
 
 ### Specs
