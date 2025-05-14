@@ -5,8 +5,12 @@
     min-height: 250px;
   }
 
+  .caption {
+    @extend .mt-2;
+  }
+
   .index_title {
-    font-size: 1.25rem;
+    @extend .h6;
   }
 
   .document-counter {
@@ -23,8 +27,7 @@
   }
 
   .document-metadata {
-    dt,
-    dd {
+    dt, dd {
       flex: 0 0 100%;
       max-width: 100%;
       padding-left: 0;
@@ -38,9 +41,7 @@
   }
 }
 
-.documents-gallery,
-.documents-masonry,
-.documents-slideshow {
-  padding-bottom: 1rem;
-  border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+.documents-gallery, .documents-masonry, .documents-slideshow {
+  padding-bottom: $spacer;
+  border-bottom: $pagination-border-width solid $pagination-border-color
 }
