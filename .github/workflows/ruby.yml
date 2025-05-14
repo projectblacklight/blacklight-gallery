@@ -17,32 +17,32 @@ jobs:
         rails_version: ["8.0.1"]
         blacklight_version: ["~> 8.0"]
         experimental: [false]
-        additional_engine_cart_rails_options: ["--css bootstrap"]
+        additional_engine_cart_rails_options: [""] # default: propshaft, bootstrap, importmaps
         additional_name: [""]
         include:
           - ruby: "3.4"
             rails_version: "7.2.2.1"
             blacklight_version: "~> 7.0"
             experimental: false
-            additional_engine_cart_rails_options: ""
+            additional_engine_cart_rails_options: "-a sprockets"
             additional_name: "/ sprockets"
           - ruby: "3.2"
             rails_version: "7.1.5.1"
             blacklight_version: "~> 7.0"
             experimental: false
-            additional_engine_cart_rails_options: ""
+            additional_engine_cart_rails_options: "-a sprockets"
             additional_name: "/ sprockets"
           - ruby: "3.4"
             rails_version: "7.2.2.1"
             blacklight_version: "github"
             experimental: true
-            additional_engine_cart_rails_options: -a propshaft --css bootstrap
-            additional_name: "/ Blacklight main branch with Propshaft"
+            additional_engine_cart_rails_options: ""
+            additional_name: "/ Blacklight main"
           - ruby: "3.4"
             rails_version: "8.0.1"
             blacklight_version: "github"
             experimental: true
-            additional_engine_cart_rails_options: "--css bootstrap"
+            additional_engine_cart_rails_options: ""
             additional_name: "/ Blacklight main"
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
