@@ -17,7 +17,7 @@ jobs:
         rails_version: ["8.0.1"]
         blacklight_version: ["~> 8.0"]
         experimental: [false]
-        additional_engine_cart_rails_options: [""] # default: propshaft, cssbundling, importmaps
+        additional_engine_cart_rails_options: [""] # default: propshaft, bootstrap, importmaps
         additional_name: [""]
         include:
           - ruby: "3.4"
