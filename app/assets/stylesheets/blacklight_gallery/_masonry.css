@@ -33,7 +33,7 @@
     }
 
     .caption-area {
-      /* styling for dicuments without thumbnails */
+      /* styling for documents without thumbnails */
       &:first-child {
         display: block;
         max-height: 100%;
