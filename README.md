@@ -66,16 +66,16 @@ Within the blacklight-gallery root directory
 ```
 bundle install
 ```
-- Run the rake task that builds internal test app with the current rails and blacklight versions defined in the gemspec file. 
-This will also run the specs. You can pass custom options to the rails engine cart using the `ENGINE_CART_OPTIONS` environment variable
-
+- Run the rake task that builds internal test app and runs the test suite.  
 ```
 bundle exec rake
 ```
-With rails engine cart options:
-```
-bundle exec rake ENGINE_CART_OPTIONS="--js=esbuild"
-```
+
+- By default, the rake task runs with the current rails and blacklight versions defined in the gemspec file, you can modify the rake task with the following environment variables:
+  - Pass custom options to the rails engine cart using the `ENGINE_CART_OPTIONS` environment variable. 
+  - Set a specific rails version with `export RAILS_VERSION=some_version_#`.
+  - Set a specific blacklight version with `export BLACKLIGHT_VERSION=some_version_#`.
+
 
 ### Stylesheets
 
