@@ -97,14 +97,18 @@ yarn build:css
 ```
 
 ### Jquery
-
-- masonry and slideshow views have a jquery dependency
-- when running the generator with the current gemspec, and the modern rails asset pipeline (`importmap`, `propshaft`, and/or `node` based bundlers),
-we have to import jquery manually in the internal test app
-- once the jquery is added to the internal test app, import the following to the internal test app `application.js` entrypoint 
+- The masonry and slideshow views require jquery. There are multiple ways to do this, and we document the
+- When running the generator with the current gemspec, and the modern rails asset pipeline (`importmap`, `propshaft`, and/or `node` based bundlers), 
+we have to import jquery manually in the internal test app. You can do this with importmaps with the following additions to your `/.internal_test_app/config/importmap.rb` file:
 
 ```
-# ./.internal_test_app/javascrpt/application.js
+# /.internal_test_app/config/importmap.rb
+
+pin "jquery", to: "https://code.jquery.com/jquery-3.7.1.min.js"
+```
+- Once jquery is added to the internal test app, import the following to the internal test app `application.js` entrypoint
+```
+# /.internal_test_app/javascrpt/application.js
 
 # import jquery and 'blacklight-gallery'
 
