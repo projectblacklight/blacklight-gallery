@@ -103,7 +103,7 @@ we have to import jquery manually in the internal test app
 - once the jquery is added to the internal test app, import the following to the internal test app `application.js` entrypoint 
 
 ```
-# ./internal_test_app/javascrpt/application.js
+# ./.internal_test_app/javascrpt/application.js
 
 # import jquery and 'blacklight-gallery'
 
