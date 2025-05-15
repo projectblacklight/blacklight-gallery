@@ -4,7 +4,9 @@
     padding: 0;
     margin: 0;
 
-    &:hover, &:focus, &:focus-within {
+    &:hover,
+    &:focus,
+    &:focus-within {
       .caption-area {
         left: auto;
         width: auto;
@@ -15,14 +17,14 @@
       }
     }
 
-    margin-bottom: $spacer * 0.5;
+    margin-bottom: 1rem * 0.5;
     position: relative;
     width: auto;
 
     .thumbnail-container {
       position: relative;
       min-height: 100px;
-      background-color: $gray-300;
+      background-color: var(--bs-gray-300);
     }
 
     .img-thumbnail {
@@ -31,16 +33,13 @@
     }
 
     .caption-area {
-      // styling for documents without thumbnails
       &:first-child {
         display: block;
         max-height: 100%;
-        background-color: rgba(0,0,0,0.7) !important;
+        background-color: rgba(0, 0, 0, 0.7) !important;
       }
-      @extend .bg-dark;
-      @extend .text-white;
       padding: 5px 7px;
-      background-color: rgba(0,0,0,0.5) !important;
+      background-color: rgba(0, 0, 0, 0.5) !important;
       position: absolute;
       bottom: 0;
       width: 1px;
@@ -54,18 +53,30 @@
     }
 
     .index_title {
-      @extend .h6;
-      a, a:hover, a:visited, a:active {
-        @extend .stretched-link;
-        color: $gray-300
+      font-size: 1.25rem;
+      a,
+      a:hover,
+      a:visited,
+      a:active {
+        &::after {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+          content: "";
+        }
+        color: var(--bs-gray-300);
       }
     }
 
     .document-metadata {
       dt {
-        color: $gray-300;
+        color: var(--bs-gray-300);
       }
-      dt, dd {
+      dt,
+      dd {
         flex: 0 0 100%;
         max-width: 100%;
         padding-left: 0;
