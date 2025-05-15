@@ -40,6 +40,8 @@
         background-color: rgba(0, 0, 0, 0.7) !important;
       }
 
+      background-color: var(--bs-gray-dark);
+      color: var(--bs-white);
       padding: 5px 7px;
       background-color: rgba(0, 0, 0, 0.5) !important;
       position: absolute;
