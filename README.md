@@ -57,6 +57,7 @@ If you would like to add or remove any particular view either add or remove the 
 - Node >= 16.13.0 (LTS)
 - Yarn >= 1.22.22
 - Java >= openjdk-21
+  - Building the internal test app will install Solr 9.6.1 locally via [`solr_wrapper`](https://github.com/cbeer/solr_wrapper)
 
 ### Building Internal Test App
 
@@ -123,8 +124,7 @@ bundle exec rake server
   `bundle exec rake`
 
 ### Solr
-- the default solr port is at 8983
-
+- The default solr port is at 8983
 
 ## Contributing
 
