@@ -62,6 +62,8 @@
       a:hover,
       a:visited,
       a:active {
+				/* this is a replication of the Boostrap .stretched-link class */
+				/* moving them into this file allows to to avoid extending the Boostrap class with SASS */
         &::after {
           position: absolute;
           top: 0;
