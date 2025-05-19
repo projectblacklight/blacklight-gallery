@@ -28,6 +28,31 @@ module BlacklightGallery
       generate 'openseadragon:install'
     end
 
+    def add_javascript
+      if defined?(Importmap)
+        say 'Installing assets for use with Importmaps', :green
+        append_to_file 'config/importmap.rb', "pin \"jquery\", to: \"https://code.jquery.com/jquery-3.7.1.min.js\"\n"
+
+        append_to_file 'app/javascript/application.js', after: %r{import Blacklight .*$} do
+          <<~CONTENT
+
+            import 'jquery'
+            import 'blacklight-gallery'
+          CONTENT
+        end
+
+        # Append plugin initialization code to main application.js file
+        append_to_file 'app/javascript/application.js' do
+          <<~CONTENT
+            Blacklight.onLoad(function() {
+              $('.documents-masonry').BlacklightMasonry();
+              $('.documents-slideshow').slideshow();
+            });
+          CONTENT
+        end
+      end
+    end
+
     def add_stylesheet
       if File.exist? 'app/assets/stylesheets/application.bootstrap.scss' # indicates cssbundling-rails with bootstrap usage
         if ENV['CI'] || ENV['USE_LOCAL_STYLES']
