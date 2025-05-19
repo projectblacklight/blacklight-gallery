@@ -54,8 +54,10 @@ module BlacklightGallery
     end
 
     def add_stylesheet
-      if File.exist? 'app/assets/stylesheets/application.bootstrap.scss' # indicates cssbundling-rails with bootstrap usage
-        if ENV['CI'] || ENV['USE_LOCAL_STYLES']
+      # Indicates cssbundling-rails with bootstrap usage.
+      if File.exist? 'app/assets/stylesheets/application.bootstrap.scss'
+        # Use local blacklight-gallery assets in CI and local test/development.
+        if ENV['CI'] || Rails.application.class.name == "Internal::Application"
           run "yarn add file:#{Blacklight::Gallery::Engine.root}"
         else
           run "yarn add blacklight-gallery@#{Blacklight::Gallery::VERSION}"
