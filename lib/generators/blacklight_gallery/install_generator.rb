@@ -28,10 +28,29 @@ module BlacklightGallery
       generate 'openseadragon:install'
     end
 
-    def assets
-      copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
+    def add_stylesheet
+      if File.exist? 'app/assets/stylesheets/application.bootstrap.scss' # indicates cssbundling-rails with bootstrap usage
+        if ENV['CI'] || ENV['USE_LOCAL_STYLES']
+          run "yarn add file:#{Blacklight::Gallery::Engine.root}"
+        else
+          run "yarn add blacklight-gallery@#{Blacklight::Gallery::VERSION}"
+        end
 
+        append_to_file 'app/assets/stylesheets/application.bootstrap.scss' do
+          <<~CONTENT
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_gallery";
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_masonry";
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_slideshow";
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_osd_viewer";
+          CONTENT
+        end
+      end
+    end
+
+    def add_sprockets_support
       return unless defined?(Sprockets)
+
+      copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
 
       append_to_file 'app/assets/config/manifest.js', "\n//= link blacklight_gallery/manifest.js\n"
 

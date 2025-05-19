@@ -26,23 +26,27 @@ end
 
 desc "Execute Continuous Integration build"
 task :ci => ['engine_cart:generate'] do
-
   require 'solr_wrapper'
   SolrWrapper.wrap(port: '8983') do |solr|
     solr.with_collection(name: 'blacklight-core', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'conf')) do
+      within_test_app do
+        # Precompiles the assets
+        `bin/rails spec:prepare`
+      end
+
       Rake::Task['fixtures'].invoke
       Rake::Task['spec'].invoke
     end
   end
 end
 
-
-desc "Run Solr and Blacklight for interactive development"
+desc "Run Solr and Blacklight app for interactive development"
 task :server do
   require 'solr_wrapper'
   SolrWrapper.wrap(port: '8983') do |solr|
     solr.with_collection(name: 'blacklight-core', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'conf')) do
       within_test_app do
+        system "yarn build:css"
         system "rake blacklight:index:seed"
         system "bundle exec rails s"
       end
