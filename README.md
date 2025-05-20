@@ -61,28 +61,28 @@ By default, the rake tasks below run with the current Rails and Blacklight versi
 - Set a specific Blacklight version with `export BLACKLIGHT_VERSION=some_version_#`.
 
 #### Building Internal Test App
-
-Within the blacklight-gallery root directory
+Within the blacklight-gallery root directory:
 - Install gems
-```
-bundle install
-```
+  ```
+  bundle install
+  ```
 
 - Run the rake task that builds internal test app  
-```
-bundle exec rake engine_cart:generate
-```
+  ```
+  bundle exec rake engine_cart:generate
+  ```
 
 - A test Rails application is build in `.internal_test_app` directory with Blacklight and Blacklight-Gallery 
 
 #### Start Rails Server
-- Run the rake task to start the rails server for the internal test app from the blacklight gallery root directory
-```
-bundle exec rake server
-```
+Within the blacklight-gallery root directory:
+- Run the rake task to start the rails server and Solr for the internal test app
+  ```
+  bundle exec rake server
+  ```
 
 #### Run Specs in test application
-- Run specs with current internal test app configuration
+- Run specs with current internal test app configuration. Generates internal test app, if not already present.
   ```
   bundle exec rake
   ```
