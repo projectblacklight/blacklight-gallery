@@ -44,6 +44,7 @@ task :server do
     solr.with_collection(name: 'blacklight-core', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'conf')) do
       within_test_app do
         system "rake blacklight:index:seed"
+        system "rails generate blacklight_gallery:thumbnails"
         system "bundle exec rails s"
       end
     end
