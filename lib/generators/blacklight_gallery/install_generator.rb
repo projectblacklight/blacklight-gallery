@@ -39,5 +39,12 @@ module BlacklightGallery
         "\n//= require blacklight_gallery/blacklight-gallery"
       end
     end
+
+    def uncomment_thumbnail_config
+      gsub_file('app/controllers/catalog_controller.rb',
+                /# config\.index\.thumbnail_field = 'thumbnail_path_ss'/) do |match|
+        match.gsub(/# /, '')
+      end
+    end
   end
 end
