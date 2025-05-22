@@ -22,6 +22,11 @@ module BlacklightGallery
       end
     end
 
+    def uncomment_thumbnail_config
+      uncomment_lines 'app/controllers/catalog_controller.rb',
+                      /config\.index\.thumbnail_field = 'thumbnail_path_ss'/
+    end
+
     def add_openseadragon
       gem "openseadragon", "~> 1.0"
       Bundler.with_unbundled_env { run 'bundle install' }
@@ -37,13 +42,6 @@ module BlacklightGallery
 
       insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
         "\n//= require blacklight_gallery/blacklight-gallery"
-      end
-    end
-
-    def uncomment_thumbnail_config
-      gsub_file('app/controllers/catalog_controller.rb',
-                /# config\.index\.thumbnail_field = 'thumbnail_path_ss'/) do |match|
-        match.gsub(/# /, '')
       end
     end
   end
