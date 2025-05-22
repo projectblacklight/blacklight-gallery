@@ -1,6 +1,6 @@
 {
   "name": "blacklight-gallery",
-  "version": "4.9.0",
+  "version": "5.0.0",
   "description": "Gallery views for Blacklight search results",
   "exports": {
     "./blacklight-gallery.esm.js": "./app/assets/javascripts/blacklight_gallery/blacklight-gallery.esm.js",
