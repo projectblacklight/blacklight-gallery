@@ -1,5 +1,5 @@
 module Blacklight
   module Gallery
-    VERSION = '4.8.4'
+    VERSION = '4.9.0'
   end
 end
