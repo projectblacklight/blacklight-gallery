@@ -22,6 +22,10 @@ module BlacklightGallery
       end
     end
 
+    def uncomment_thumbnail_config
+      uncomment_lines 'app/controllers/catalog_controller.rb', /config\.index\.thumbnail_field.*$/
+    end
+
     def add_openseadragon
       gem "openseadragon", "~> 1.0"
       Bundler.with_unbundled_env { run 'bundle install' }
