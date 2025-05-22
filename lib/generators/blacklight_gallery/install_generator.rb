@@ -23,8 +23,7 @@ module BlacklightGallery
     end
 
     def uncomment_thumbnail_config
-      uncomment_lines 'app/controllers/catalog_controller.rb',
-                      /config\.index\.thumbnail_field = 'thumbnail_path_ss'/
+      uncomment_lines 'app/controllers/catalog_controller.rb', /config\.index\.thumbnail_field.*$/
     end
 
     def add_openseadragon
