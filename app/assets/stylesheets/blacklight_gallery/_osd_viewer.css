@@ -1,5 +1,4 @@
 .openseadragon-container {
-
   .osd-toolbar {
     padding: 5px 0;
 
@@ -22,8 +21,7 @@
   }
 
   .osd-image {
-    border: 1px solid #ccc;
+    border: 1px solid var(--bs-gray-400);
     height: 400px;
-
   }
 }
