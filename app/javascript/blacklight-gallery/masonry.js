@@ -1,5 +1,3 @@
-import Blacklight from 'blacklight-frontend'
-
 (function($){
   $.fn.BlacklightMasonry = function() {
     var container = this;
@@ -12,7 +10,3 @@ import Blacklight from 'blacklight-frontend'
 
   $.fn.BlacklightMasonry.options = { gutter: 8 };
 })(jQuery);
-
-Blacklight.onLoad(function() {
-  $('.documents-masonry').BlacklightMasonry();
-});

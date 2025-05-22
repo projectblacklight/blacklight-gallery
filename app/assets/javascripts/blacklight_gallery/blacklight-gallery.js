@@ -1,8 +1,7 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('blacklight-frontend')) :
-  typeof define === 'function' && define.amd ? define(['blacklight-frontend'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Blacklight));
-})(this, (function (Blacklight) { 'use strict';
+(function (factory) {
+  typeof define === 'function' && define.amd ? define(factory) :
+  factory();
+})((function () { 'use strict';
 
   /*!
    * imagesLoaded PACKAGED v5.0.0
@@ -578,11 +577,6 @@
 
   })(jQuery);
 
-
-  Blacklight.onLoad(function() {
-    $('.documents-slideshow').slideshow();
-  });
-
   (function($){
     $.fn.BlacklightMasonry = function() {
       var container = this;
@@ -595,10 +589,6 @@
 
     $.fn.BlacklightMasonry.options = { gutter: 8 };
   })(jQuery);
-
-  Blacklight.onLoad(function() {
-    $('.documents-masonry').BlacklightMasonry();
-  });
 
 }));
 //# sourceMappingURL=blacklight-gallery.js.map

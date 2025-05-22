@@ -13,7 +13,7 @@ task :default => :ci
 rails_options = ENV.fetch('ENGINE_CART_RAILS_OPTIONS', '')
 rails_options = "#{rails_options} -a propshaft" unless rails_options.match?(/-a\s|--asset-pipeline/)
 rails_options = "#{rails_options} -j importmap" unless rails_options.match?(/-j\s|--javascript/)
-rails_options = "#{rails_options} --css bootstrap" unless rails_options.match?(/--css/)
+rails_options = "#{rails_options} --css bootstrap" unless rails_options.match?(/--css\s|sprockets/)
 ENV['ENGINE_CART_RAILS_OPTIONS'] = rails_options
 
 desc "Load fixtures"
@@ -26,10 +26,14 @@ end
 
 desc "Execute Continuous Integration build"
 task :ci => ['engine_cart:generate'] do
-
   require 'solr_wrapper'
   SolrWrapper.wrap(port: '8983') do |solr|
     solr.with_collection(name: 'blacklight-core', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'conf')) do
+      within_test_app do
+        # Precompiles the assets
+        `bin/rails spec:prepare`
+      end
+
       Rake::Task['fixtures'].invoke
       Rake::Task['spec'].invoke
     end
@@ -47,7 +51,9 @@ task :server do
         ENV['FILE'] = File.join(__dir__, 'spec', 'fixtures', 'sample_solr_documents.yml')
         system 'rake blacklight:index:seed'
         ENV.delete('FILE')
-        system 'bundle exec rails s'
+
+        system "yarn build:css"
+        system "bundle exec rails s"
       end
     end
   end

@@ -19,32 +19,15 @@ Or install it yourself as:
 
 ## Usage
 
-### With Sprockets
+### Installation with Sprockets/Propshaft and Importmaps
 
-If your asset pipeline uses Sprockets, simply run the gallery generator:
+If your asset pipeline uses Sprockets/Propshaft with Importmaps, run the gallery generator:
 
 ```sh
 $ rails g blacklight_gallery:install
 ```
 
-### With Importmaps
-
-New installations of Blacklight will probably use [Importmaps](https://github.com/rails/importmap-rails) to manage javascript assets. In order to support the masonry and slideshow views, jQuery needs to be added to your application Importmaps configuration.
-
-In addition to running the `blacklight_gallery:install` generator, add this line to `/config/importmap.rb`:
-
-```ruby
-pin "jquery", to: "https://code.jquery.com/jquery-3.7.1.min.js"
-```
-
-Then append import declarations in your `app/assets/javascript/application.js`:
-
-```js
-import 'jquery'
-import 'blacklight-gallery'
-```
-
-### With Node-based JS bundlers
+### Installation for Node-based JS bundlers
 
 For node-based bundlers add `blacklight-gallery masonry-layout@v4` as a dependency and add this to your entrypoint:
 ```js
@@ -52,11 +35,6 @@ import 'blacklight-gallery/vendor/assets/javascripts/imagesloaded.pkgd.js'
 import 'blacklight-gallery/app/javascript/blacklight-gallery/slideshow'
 import 'blacklight-gallery/app/javascript/blacklight-gallery/masonry'
 ```
-
-### With Propshaft
-
-Propshaft will process and include any CSS files in your `app/assets/stylesheets` directory. The `blacklight_gallery:install` generator adds [a file](https://github.com/projectblacklight/blacklight-gallery/blob/v4.8.4/lib/generators/blacklight_gallery/templates/blacklight_gallery.css.scss) to `app/assets/stylesheets` that loads the included styles for all views.
-The styles require compilation from SASS to CSS, which will require usage of a compiler like [`dartsass-rails`](https://github.com/rails/dartsass-rails).
 
 ## Manual Installation
 
@@ -76,73 +54,39 @@ See the wiki page on [manual installation](https://github.com/projectblacklight/
 - Java >= openjdk-21
   - Building the internal test app will install Solr 9.6.1 locally via [`solr_wrapper`](https://github.com/cbeer/solr_wrapper)
 
-### Building Internal Test App
+### Building and testing test application
+By default, the rake tasks below run with the current Rails and Blacklight versions defined in the gemspec file. You can modify the rake task with the following environment variables:
+- Pass custom options to the rails engine cart using the `ENGINE_CART_RAILS_OPTIONS` environment variable.
+- Set a specific Rails version with `export RAILS_VERSION=some_version_#`.
+- Set a specific Blacklight version with `export BLACKLIGHT_VERSION=some_version_#`.
+- Use Blacklight on the latest commit from the repository with `export BLACKLIGHT_VERSION=github`
 
-Within the blacklight-gallery root directory
+#### Building Internal Test App
+Within the blacklight-gallery root directory:
 - Install gems
-```
-bundle install
-```
-- Run the rake task that builds internal test app and runs the test suite.  
-```
-bundle exec rake
-```
-
-- By default, the rake task runs with the current rails and blacklight versions defined in the gemspec file, you can modify the rake task with the following environment variables:
-  - Pass custom options to the rails engine cart using the `ENGINE_CART_OPTIONS` environment variable. 
-  - Set a specific rails version with `export RAILS_VERSION=some_version_#`.
-  - Set a specific blacklight version with `export BLACKLIGHT_VERSION=some_version_#`.
-
-
-### Stylesheets
-
-- When using the modern rails asset pipeline (`importmap` + `propshaft`) to build the internal test app, we need to manually include the `.scss` stylesheets in the host application's stylesheet entrypoint
-- Copy the gem's `.scss` stylesheets in `/app/assets/stylesheets` to `/.internal_test_app/assets/stylesheets`
-- Import stylesheets in internal test app stylesheet entrypoint.
-```
-# internal_test_app stylesheet entrypoint 
-
-@import 'gallery';
-@import 'slideshow';
-@import 'masonry';
-@import 'osd_viewer';
   ```
-- Compile scss from within `/.internal_test_app` with the following `yarn` command
+  bundle install
+  ```
 
-```
-yarn build:css
-```
+- Run the rake task that builds internal test app  
+  ```
+  bundle exec rake engine_cart:generate
+  ```
 
-### Jquery
-- The masonry and slideshow views require jquery. There are multiple ways to do this, and we document the
-- When running the generator with the current gemspec, and the modern rails asset pipeline (`importmap`, `propshaft`, and/or `node` based bundlers), 
-we have to import jquery manually in the internal test app. You can do this with importmaps with the following additions to your `/.internal_test_app/config/importmap.rb` file:
+- A test Rails application is built in the `.internal_test_app` directory with Blacklight and Blacklight-Gallery 
 
-```
-# /.internal_test_app/config/importmap.rb
+#### Start Rails Server
+Within the blacklight-gallery root directory:
+- Run the rake task to start the rails server and Solr for the internal test app
+  ```
+  bundle exec rake server
+  ```
 
-pin "jquery", to: "https://code.jquery.com/jquery-3.7.1.min.js"
-```
-- Once jquery is added to the internal test app, import the following to the internal test app `application.js` entrypoint
-```
-# /.internal_test_app/javascrpt/application.js
-
-# import jquery and 'blacklight-gallery'
-
-import 'jquery'
-import 'blacklight-gallery'
-```
-
-### Start Rails Server
-- Run the rake task to start the rails server for the internal test app from the blacklight gallery root directory
-```
-bundle exec rake server
-```
-
-### Specs
-
-- Run specs with current internal test app configuration
-  `bundle exec rake`
+#### Run Specs in test application
+- Run specs with current internal test app configuration. Generates internal test app, if not already present.
+  ```
+  bundle exec rake
+  ```
 
 ### Solr
 - The default solr port is at 8983

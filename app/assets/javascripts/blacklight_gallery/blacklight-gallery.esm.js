@@ -1,5 +1,3 @@
-import Blacklight from 'blacklight-frontend';
-
 /*!
  * imagesLoaded PACKAGED v5.0.0
  * JavaScript is all like "You images are done yet or what?"
@@ -574,11 +572,6 @@ return ImagesLoaded;
 
 })(jQuery);
 
-
-Blacklight.onLoad(function() {
-  $('.documents-slideshow').slideshow();
-});
-
 (function($){
   $.fn.BlacklightMasonry = function() {
     var container = this;
@@ -591,8 +584,4 @@ Blacklight.onLoad(function() {
 
   $.fn.BlacklightMasonry.options = { gutter: 8 };
 })(jQuery);
-
-Blacklight.onLoad(function() {
-  $('.documents-masonry').BlacklightMasonry();
-});
 //# sourceMappingURL=blacklight-gallery.esm.js.map

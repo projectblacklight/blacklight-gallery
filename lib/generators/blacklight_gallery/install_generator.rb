@@ -32,15 +32,70 @@ module BlacklightGallery
       generate 'openseadragon:install'
     end
 
-    def assets
-      copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
+    def add_javascript
+      if defined?(Importmap)
+        say 'Installing assets for use with Importmaps', :green
+        append_to_file 'config/importmap.rb', "pin \"jquery\", to: \"https://code.jquery.com/jquery-3.7.1.min.js\"\n"
 
+        append_to_file 'app/javascript/application.js', after: %r{import Blacklight .*$} do
+          <<~CONTENT
+
+            import 'jquery'
+            import 'blacklight-gallery'
+          CONTENT
+        end
+
+        # Append plugin initialization code to main application.js file
+        append_to_file 'app/javascript/application.js' do
+          <<~CONTENT
+            Blacklight.onLoad(function() {
+              $('.documents-masonry').BlacklightMasonry();
+              $('.documents-slideshow').slideshow();
+            });
+          CONTENT
+        end
+      end
+    end
+
+    def add_stylesheet
+      # Indicates cssbundling-rails with bootstrap usage.
+      if File.exist? 'app/assets/stylesheets/application.bootstrap.scss'
+        # Use local blacklight-gallery assets in CI and local test/development.
+        if ENV['CI'] || Rails.application.class.name == "Internal::Application"
+          run "yarn add file:#{Blacklight::Gallery::Engine.root}"
+        else
+          run "yarn add blacklight-gallery@#{Blacklight::Gallery::VERSION}"
+        end
+
+        append_to_file 'app/assets/stylesheets/application.bootstrap.scss' do
+          <<~CONTENT
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_gallery";
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_masonry";
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_slideshow";
+            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_osd_viewer";
+          CONTENT
+        end
+      end
+    end
+
+    def add_sprockets_support
       return unless defined?(Sprockets)
+
+      copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
 
       append_to_file 'app/assets/config/manifest.js', "\n//= link blacklight_gallery/manifest.js\n"
 
       insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
         "\n//= require blacklight_gallery/blacklight-gallery"
+      end
+
+      insert_into_file "app/assets/javascripts/application.js" do
+        <<~CONTENT
+            Blacklight.onLoad(function() {
+              $('.documents-masonry').BlacklightMasonry();
+              $('.documents-slideshow').slideshow();
+            });
+          CONTENT
       end
     end
   end

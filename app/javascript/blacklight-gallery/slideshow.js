@@ -1,5 +1,3 @@
-import Blacklight from 'blacklight-frontend'
-
 (function($){
   var Slideshow = function (element, options) {
     this.$element = $(element);
@@ -122,8 +120,3 @@ import Blacklight from 'blacklight-frontend'
   }
 
 })(jQuery);
-
-
-Blacklight.onLoad(function() {
-  $('.documents-slideshow').slideshow();
-});
