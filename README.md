@@ -55,10 +55,11 @@ See the wiki page on [manual installation](https://github.com/projectblacklight/
   - Building the internal test app will install Solr 9.6.1 locally via [`solr_wrapper`](https://github.com/cbeer/solr_wrapper)
 
 ### Building and testing test application
-By default, the rake tasks below run with the current Rails and Blacklight versions defined in the gemspec file, you can modify the rake task with the following environment variables:
+By default, the rake tasks below run with the current Rails and Blacklight versions defined in the gemspec file. You can modify the rake task with the following environment variables:
 - Pass custom options to the rails engine cart using the `ENGINE_CART_RAILS_OPTIONS` environment variable.
 - Set a specific Rails version with `export RAILS_VERSION=some_version_#`.
 - Set a specific Blacklight version with `export BLACKLIGHT_VERSION=some_version_#`.
+- Use Blacklight on the latest commit from the repository with `export BLACKLIGHT_VERSION=github`
 
 #### Building Internal Test App
 Within the blacklight-gallery root directory:
@@ -72,7 +73,7 @@ Within the blacklight-gallery root directory:
   bundle exec rake engine_cart:generate
   ```
 
-- A test Rails application is build in `.internal_test_app` directory with Blacklight and Blacklight-Gallery 
+- A test Rails application is built in the `.internal_test_app` directory with Blacklight and Blacklight-Gallery 
 
 #### Start Rails Server
 Within the blacklight-gallery root directory:
