@@ -15,8 +15,7 @@
   "files": [
     "app/assets/javascripts/blacklight_gallery/*.js",
     "app/javascript/blacklight-gallery/*.js",
-    "vendor/assets/javascripts/*.js",
-    "app/assets/stylesheets/blacklight_gallery/*.scss"
+    "vendor/assets/javascripts/*.js"
   ],
   "repository": {
     "type": "git",
