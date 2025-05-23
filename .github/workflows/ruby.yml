@@ -23,13 +23,13 @@ jobs:
           - ruby: "3.4"
             rails_version: "7.2.2.1"
             blacklight_version: "~> 9.0.0beta1"
-            experimental: true
+            experimental: false
             additional_engine_cart_rails_options: "-a sprockets"
             additional_name: "/ sprockets"
           - ruby: "3.2"
             rails_version: "7.1.5.1"
             blacklight_version: "~> 9.0.0beta1"
-            experimental: true
+            experimental: false
             additional_engine_cart_rails_options: "-a sprockets"
             additional_name: "/ sprockets"
           - ruby: "3.4"
