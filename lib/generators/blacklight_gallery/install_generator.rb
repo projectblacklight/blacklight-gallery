@@ -84,19 +84,6 @@ module BlacklightGallery
       return unless defined?(Sprockets)
 
       append_to_file 'app/assets/config/manifest.js', "\n//= link blacklight_gallery/manifest.js\n"
-
-      insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
-        "\n//= require blacklight_gallery/blacklight-gallery"
-      end
-
-      insert_into_file "app/assets/javascripts/application.js" do
-        <<~CONTENT
-            Blacklight.onLoad(function() {
-              $('.documents-masonry').BlacklightMasonry();
-              $('.documents-slideshow').slideshow();
-            });
-          CONTENT
-      end
     end
   end
 end
