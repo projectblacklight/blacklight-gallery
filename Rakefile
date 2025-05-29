@@ -13,7 +13,6 @@ task :default => :ci
 rails_options = ENV.fetch('ENGINE_CART_RAILS_OPTIONS', '')
 rails_options = "#{rails_options} -a propshaft" unless rails_options.match?(/-a\s|--asset-pipeline/)
 rails_options = "#{rails_options} -j importmap" unless rails_options.match?(/-j\s|--javascript/)
-rails_options = "#{rails_options} --css bootstrap" unless rails_options.match?(/--css\s|sprockets/)
 ENV['ENGINE_CART_RAILS_OPTIONS'] = rails_options
 
 desc "Load fixtures"

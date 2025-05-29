@@ -60,19 +60,21 @@ module BlacklightGallery
     def add_stylesheet
       # Indicates cssbundling-rails with bootstrap usage.
       if File.exist? 'app/assets/stylesheets/application.bootstrap.scss'
-        # Use local blacklight-gallery assets in CI and local test/development.
-        if ENV['CI'] || Rails.application.class.name == "Internal::Application"
-          run "yarn add file:#{Blacklight::Gallery::Engine.root}"
-        else
-          run "yarn add blacklight-gallery@#{Blacklight::Gallery::VERSION}"
-        end
-
         append_to_file 'app/assets/stylesheets/application.bootstrap.scss' do
           <<~CONTENT
-            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_gallery";
-            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_masonry";
-            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_slideshow";
-            @import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_osd_viewer";
+            @import url('blacklight_gallery/gallery.css');
+            @import url('blacklight_gallery/masonry.css');
+            @import url('blacklight_gallery/osd_viewer.css');
+            @import url('blacklight_gallery/slideshow.css');
+          CONTENT
+        end
+      else
+        append_to_file 'app/assets/stylesheets/application.css' do
+          <<~CONTENT
+              @import url('blacklight_gallery/gallery.css');
+              @import url('blacklight_gallery/masonry.css');
+              @import url('blacklight_gallery/osd_viewer.css');
+              @import url('blacklight_gallery/slideshow.css');
           CONTENT
         end
       end
@@ -81,22 +83,7 @@ module BlacklightGallery
     def add_sprockets_support
       return unless defined?(Sprockets)
 
-      copy_file "blacklight_gallery.css.scss", "app/assets/stylesheets/blacklight_gallery.css.scss"
-
       append_to_file 'app/assets/config/manifest.js', "\n//= link blacklight_gallery/manifest.js\n"
-
-      insert_into_file "app/assets/javascripts/application.js", after: '//= require blacklight/blacklight' do
-        "\n//= require blacklight_gallery/blacklight-gallery"
-      end
-
-      insert_into_file "app/assets/javascripts/application.js" do
-        <<~CONTENT
-            Blacklight.onLoad(function() {
-              $('.documents-masonry').BlacklightMasonry();
-              $('.documents-slideshow').slideshow();
-            });
-          CONTENT
-      end
     end
   end
 end
