@@ -5,7 +5,6 @@ require 'spec_helper'
 RSpec.describe Blacklight::Gallery::OpenseadragonEmbedComponent, type: :component do
   subject(:component) do
     described_class.new(
-      document: document,
       presenter: presenter,
       **attr
     )

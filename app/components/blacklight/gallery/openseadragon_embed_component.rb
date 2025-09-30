@@ -3,12 +3,11 @@
 module Blacklight
   module Gallery
     class OpenseadragonEmbedComponent < Blacklight::Component
-      attr_reader :document, :presenter, :classes
+      attr_reader :presenter, :classes
 
-      def initialize(document:, presenter:, view_config: nil, classes: [], **kwargs)
-        super
+      def initialize(presenter:, view_config: nil, classes: [], **kwargs)
+        super()
 
-        @document = document
         @presenter = presenter
         @view_config = view_config
         @classes = classes
@@ -16,7 +15,7 @@ module Blacklight
       end
 
       def image
-        @image ||= document.to_openseadragon(view_config)
+        @image ||= presenter.document.to_openseadragon(view_config)
       end
 
       def count
