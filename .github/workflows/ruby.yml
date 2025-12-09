@@ -39,7 +39,7 @@ jobs:
             additional_engine_cart_rails_options: ""
             additional_name: "/ Blacklight main"
           - ruby: "3.4"
-            rails_version: "8.0.1"
+            rails_version: "8.1.1"
             blacklight_version: "github"
             experimental: true
             additional_engine_cart_rails_options: ""
