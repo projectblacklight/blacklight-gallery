@@ -1,6 +1,12 @@
 .documents-masonry {
+  border: 1px solid #c5c5c5;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, minmax(40px, auto));
+  grid-gap: 10px;
+
   .document {
-    max-width: 25%;
     padding: 0;
     margin: 0;
 
@@ -62,8 +68,8 @@
       a:hover,
       a:visited,
       a:active {
-				/* this is a replication of the Boostrap .stretched-link class */
-				/* moving them into this file allows to to avoid extending the Boostrap class with SASS */
+        /* this is a replication of the Boostrap .stretched-link class */
+        /* moving them into this file allows to to avoid extending the Boostrap class with SASS */
         &::after {
           position: absolute;
           top: 0;
