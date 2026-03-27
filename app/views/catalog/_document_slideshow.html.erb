@@ -6,29 +6,9 @@
     <%= render((view_config.preview_component || Blacklight::Gallery::SlideshowPreviewComponent).with_collection(document_presenters)) %>
   </div>
 
-  <%= render layout: 'slideshow_modal' do %>
-    <div id="slideshow" class="slideshow-presenter">
-      <!-- Wrapper for slides -->
-      <div class="slideshow-inner">
-        <%= render view_config.document_component.with_collection(document_presenters, counter_offset: @response&.start || 0) %>
-      </div>
-
-      <!-- Controls -->
-      <a class="left carousel-control prev" href="#slideshow" data-slide="prev" data-bs-slide="prev">
-        <%= render Blacklight::Gallery::Icons::ChevronLeftComponent.new additional_options: { label_context: 'previous_image' } %>
-      </a>
-      <a class="right carousel-control next" href="#slideshow" data-slide="next" data-bs-slide="next">
-        <%= render Blacklight::Gallery::Icons::ChevronRightComponent.new additional_options: { label_context: 'next_image' } %>
-      </a>
-
-      <div class="controls text-center">
-        <button class="btn btn-sm btn-link" data-behavior="pause-slideshow" aria-label="<%= t('blacklight_gallery.catalog.slideshow.pause') %>">
-        <%= render Blacklight::Gallery::Icons::PauseSlideshowComponent.new %>
-        </button>
-        <button class="btn btn-sm btn-link" data-behavior="start-slideshow" aria-label="<%= t('blacklight_gallery.catalog.slideshow.start') %>">
-          <%= render Blacklight::Gallery::Icons::StartSlideshowComponent.new %>
-        </button>
-      </div>
-    </div>
+  <%= render Blacklight::Gallery::SlideshowModalComponent.new do %>
+    <%= render Blacklight::Gallery::SlideshowPresenterComponent.new(document_presenters:,
+                                                                    view_config:,
+                                                                    counter_offset: @response&.start || 0) %>
   <% end %>
 </div>
