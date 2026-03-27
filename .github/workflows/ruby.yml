@@ -13,37 +13,19 @@ jobs:
     name: test (ruby ${{ matrix.ruby }} / rails ${{ matrix.rails_version }} / blacklight ${{ matrix.blacklight_version }} ${{ matrix.additional_name }})
     strategy:
       matrix:
-        ruby: ["3.2", "3.3", "3.4"]
-        rails_version: ["8.0.1"]
-        blacklight_version: ["~> 9.0.0beta1"]
+        ruby: ["3.3", "3.4", "4.0"]
+        rails_version: ["8.1.3"]
+        blacklight_version: ["~> 9.0"]
         experimental: [false]
         additional_engine_cart_rails_options: [""] # default: propshaft, bootstrap, importmaps
         additional_name: [""]
         include:
           - ruby: "3.4"
-            rails_version: "7.2.2.1"
-            blacklight_version: "~> 9.0.0beta1"
-            experimental: false
-            additional_engine_cart_rails_options: ""
-            additional_name: ""
-          - ruby: "3.2"
-            rails_version: "7.1.5.1"
-            blacklight_version: "~> 9.0.0beta1"
-            experimental: false
-            additional_engine_cart_rails_options: ""
-            additional_name: ""
+            rails_version: "7.2.3.1"
           - ruby: "3.4"
-            rails_version: "7.2.2.1"
-            blacklight_version: "github"
-            experimental: true
-            additional_engine_cart_rails_options: ""
-            additional_name: "/ Blacklight main"
-          - ruby: "3.4"
-            rails_version: "8.1.1"
-            blacklight_version: "github"
-            experimental: true
-            additional_engine_cart_rails_options: ""
-            additional_name: "/ Blacklight main"
+            blacklight_version: "~> 8.12"
+            rails_version: "8.0.5"
+            additional_name: "Rails 8.0 / Blacklight 8.12"
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
       BLACKLIGHT_VERSION: ${{ matrix.blacklight_version }}
