@@ -22,10 +22,12 @@ jobs:
         include:
           - ruby: "3.4"
             rails_version: "7.2.3.1"
+            experimental: false
+            additional_name: "Rails 7.2"
           - ruby: "3.4"
-            blacklight_version: "~> 8.12"
             rails_version: "8.0.5"
-            additional_name: "Rails 8.0 / Blacklight 8.12"
+            experimental: false
+            additional_name: "Rails 8.0"
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
       BLACKLIGHT_VERSION: ${{ matrix.blacklight_version }}
