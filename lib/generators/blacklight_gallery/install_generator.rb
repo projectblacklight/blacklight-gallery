@@ -2,11 +2,10 @@ require 'rails/generators'
 
 module BlacklightGallery
   class Install < Rails::Generators::Base
-
-    source_root File.expand_path('../templates', __FILE__)
+    source_root File.expand_path('templates', __dir__)
 
     def configuration
-      inject_into_file 'app/controllers/catalog_controller.rb', after: "configure_blacklight do |config|" do
+      inject_into_file 'app/controllers/catalog_controller.rb', after: 'configure_blacklight do |config|' do
         "\n    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)" \
         "\n    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent)" \
         "\n    config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)" \
@@ -17,8 +16,8 @@ module BlacklightGallery
     end
 
     def add_model_mixin
-      inject_into_file 'app/models/solr_document.rb', after: "include Blacklight::Solr::Document" do
-       "\n  include Blacklight::Gallery::OpenseadragonSolrDocument\n"
+      inject_into_file 'app/models/solr_document.rb', after: 'include Blacklight::Solr::Document' do
+        "\n  include Blacklight::Gallery::OpenseadragonSolrDocument\n"
       end
     end
 
@@ -27,33 +26,33 @@ module BlacklightGallery
     end
 
     def add_openseadragon
-      gem "openseadragon", "~> 1.0"
+      gem 'openseadragon', '~> 1.0'
       Bundler.with_unbundled_env { run 'bundle install' }
       generate 'openseadragon:install'
     end
 
     def add_javascript
-      if defined?(Importmap)
-        say 'Installing assets for use with Importmaps', :green
-        append_to_file 'config/importmap.rb', "pin \"jquery\", to: \"https://code.jquery.com/jquery-3.7.1.min.js\"\n"
+      return unless defined?(Importmap)
 
-        append_to_file 'app/javascript/application.js', after: %r{import Blacklight .*$} do
-          <<~CONTENT
+      say 'Installing assets for use with Importmaps', :green
+      append_to_file 'config/importmap.rb', "pin \"jquery\", to: \"https://code.jquery.com/jquery-3.7.1.min.js\"\n"
 
-            import 'jquery'
-            import 'blacklight-gallery'
-          CONTENT
-        end
+      append_to_file 'app/javascript/application.js', after: /import Blacklight .*$/ do
+        <<~CONTENT
 
-        # Append plugin initialization code to main application.js file
-        append_to_file 'app/javascript/application.js' do
-          <<~CONTENT
-            Blacklight.onLoad(function() {
-              $('.documents-masonry').BlacklightMasonry();
-              $('.documents-slideshow').slideshow();
-            });
-          CONTENT
-        end
+          import 'jquery'
+          import 'blacklight-gallery'
+        CONTENT
+      end
+
+      # Append plugin initialization code to main application.js file
+      append_to_file 'app/javascript/application.js' do
+        <<~CONTENT
+          Blacklight.onLoad(function() {
+            $('.documents-masonry').BlacklightMasonry();
+            initSlideshow('.documents-slideshow', { autoPlay: true, interval: 3000 });
+          });
+        CONTENT
       end
     end
 
@@ -71,10 +70,10 @@ module BlacklightGallery
       else
         append_to_file 'app/assets/stylesheets/application.css' do
           <<~CONTENT
-              @import url('blacklight_gallery/gallery.css');
-              @import url('blacklight_gallery/masonry.css');
-              @import url('blacklight_gallery/osd_viewer.css');
-              @import url('blacklight_gallery/slideshow.css');
+            @import url('blacklight_gallery/gallery.css');
+            @import url('blacklight_gallery/masonry.css');
+            @import url('blacklight_gallery/osd_viewer.css');
+            @import url('blacklight_gallery/slideshow.css');
           CONTENT
         end
       end
