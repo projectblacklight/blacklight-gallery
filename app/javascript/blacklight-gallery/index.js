@@ -1,4 +1,4 @@
-import "blacklight-gallery/slideshow"
+import bootstrap from "bootstrap"
 
 import { supportsGridLanes, init } from "blacklight-gallery/grid-lanes-polyfill"
 
@@ -7,3 +7,5 @@ document.addEventListener("DOMContentLoaded", () => {
     init({ force: true })
   }
 })
+
+const carousel = new bootstrap.Carousel("#slideshow")
