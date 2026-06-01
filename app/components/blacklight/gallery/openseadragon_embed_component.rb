@@ -6,7 +6,7 @@ module Blacklight
       attr_reader :document, :presenter, :classes
 
       def initialize(document:, presenter:, view_config: nil, classes: [], **kwargs)
-        super
+        super()
 
         @document = document
         @presenter = presenter
