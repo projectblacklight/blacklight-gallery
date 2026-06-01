@@ -33,7 +33,7 @@ jobs:
       BLACKLIGHT_VERSION: ${{ matrix.blacklight_version }}
       ENGINE_CART_RAILS_OPTIONS: "--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-kamal --skip-solid --skip-thruster --skip-docker --skip-test ${{ matrix.additional_engine_cart_rails_options }}"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
