@@ -54,7 +54,8 @@
     }
   }
 
-  .carousel-control {
+  .carousel-control-prev,
+  .carousel-control-next {
     position: absolute;
     top: 0;
     height: 100%;
@@ -73,10 +74,10 @@
       }
     }
   }
-  .carousel-control.left {
+  .carousel-control-left {
     left: 0px;
   }
-  .carousel-control.right {
+  .carousel-control-right {
     right: 0px;
   }
 

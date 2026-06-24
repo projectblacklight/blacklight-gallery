@@ -1,5 +1,7 @@
-import 'imagesloaded.pkgd'
-import 'masonry.min'
+import "imagesloaded.pkgd"
+import "masonry.min"
+import bootstrap from "bootstrap"
 
-import 'blacklight-gallery/slideshow'
-import 'blacklight-gallery/masonry'
+import "blacklight-gallery/masonry"
+
+const carousel = new bootstrap.Carousel("#slideshow")
