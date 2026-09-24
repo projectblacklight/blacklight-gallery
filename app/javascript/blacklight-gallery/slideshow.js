@@ -119,39 +119,6 @@
     interval: 5000 // in milliseconds
   }
 
-  // Helper function to merge objects (replaces $.extend)
-  function extend() {
-    var extended = {}
-    var i = 0
-
-    for (; i < arguments.length; i++) {
-      var obj = arguments[i]
-      for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          extended[key] = obj[key]
-        }
-      }
-    }
-
-    return extended
-  }
-
-  // Helper function to get data attributes as object
-  function getDataAttributes(element) {
-    var data = {}
-    Array.from(element.attributes).forEach(function (attr) {
-      if (attr.name.indexOf("data-") === 0) {
-        var camelCase = attr.name
-          .substr(5)
-          .replace(/-(.)/g, function (match, chr) {
-            return chr.toUpperCase()
-          })
-        data[camelCase] = attr.value
-      }
-    })
-    return data
-  }
-
   // Public initialization function
   window.initSlideshow = function (selector, option) {
     var elements =
@@ -161,11 +128,10 @@
 
     Array.from(elements).forEach(function (element) {
       var data = element._slideshow
-      var dataAttrs = getDataAttributes(element)
-      var options = extend(
+      var options = Object.assign(
         {},
         Slideshow.DEFAULTS,
-        dataAttrs,
+        element.dataset,
         typeof option == "object" ? option : {}
       )
 
