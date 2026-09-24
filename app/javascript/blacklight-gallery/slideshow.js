@@ -89,14 +89,15 @@
         if (target) {
           e.preventDefault()
 
+          const slideToAttr =
+            target.getAttribute("data-slide-to") ??
+            target.getAttribute("data-bs-slide-to")
+
           const pos =
-            parseInt(
-              target.getAttribute("data-slide-to") ||
-                target.getAttribute("data-bs-slide-to"),
-              10
-            ) ||
-            target.getAttribute("data-slide") ||
-            target.getAttribute("data-bs-slide")
+            slideToAttr !== null
+              ? parseInt(slideToAttr, 10)
+              : target.getAttribute("data-slide") ||
+                target.getAttribute("data-bs-slide")
 
           if (pos === "next" || pos === "prev") _this.pause()
           _this.to(pos)
