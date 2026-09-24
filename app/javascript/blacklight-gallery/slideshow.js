@@ -1,122 +1,143 @@
-(function($){
+;(function () {
   var Slideshow = function (element, options) {
-    this.$element = $(element);
-    this.options  = options;
-    this.paused   = false;
-    this.activeIndex = 0;
+    this.element = element
+    this.options = options
+    this.paused = false
+    this.activeIndex = 0
 
-    this.init = function() {
-      this.$items = this.$element.find('.item');
+    this.init = function () {
+      this.items = Array.from(this.element.querySelectorAll(".item"))
     }
 
-    this.attachEvents();
-    this.init();
+    this.attachEvents()
+    this.init()
   }
-
 
   Slideshow.prototype = {
+    slide: function (item) {
+      this.items.forEach(el => (el.style.display = "none"))
+      item.style.display = "block"
 
-    slide: function(item) {
-      var $item     = $(item),
-          $frame    = $item.find('.frame'),
-          marginTop = 0;
+      this.activeIndex = this.items.indexOf(item)
 
-      this.$items.hide();
-      $item.show();
+      if (this.options.autoPlay && !this.paused) this.play()
 
-      marginTop = Math.round($item.height() - $frame.height())/2;
-      this.activeIndex = this.$items.index(item);
-
-      if (this.options.autoPlay && !this.paused) this.play();
-
-      return this;
+      return this
     },
 
-    play: function() {
-      this.paused = false;
+    play: function () {
+      this.paused = false
 
-      if (this.interval) clearInterval(this.interval);
-      this.interval = setInterval($.proxy(this.next, this), this.options.interval);
+      if (this.interval) clearInterval(this.interval)
+      this.interval = setInterval(this.next.bind(this), this.options.interval)
     },
 
-    pause: function() {
-      this.paused = true;
-      this.interval = clearInterval(this.interval);
+    pause: function () {
+      this.paused = true
+      clearInterval(this.interval)
+      this.interval = null
 
-      return this;
+      return this
     },
 
-    startAt: function(pos) {
-      this.to(pos);
+    startAt: function (pos) {
+      this.to(pos)
     },
 
-    next: function() {
-      return this.to('next');
+    next: function () {
+      return this.to("next")
     },
 
-    to: function(pos) {
-      if (pos === 'next') pos = this.activeIndex + 1;
-      if (pos === 'prev') pos = this.activeIndex - 1;
+    to: function (pos) {
+      if (pos === "next") pos = this.activeIndex + 1
+      if (pos === "prev") pos = this.activeIndex - 1
 
-      return this.slide(this.$items[this.getValidIndex(pos)]);
+      return this.slide(this.items[this.getValidIndex(pos)])
     },
 
-    getValidIndex: function(index) {
-      if (typeof index === 'undefined' || index > (this.$items.length - 1)) index = 0;
-      if (index < 0) index = this.$items.length - 1;
+    getValidIndex: function (index) {
+      if (typeof index === "undefined" || index > this.items.length - 1)
+        index = 0
+      if (index < 0) index = this.items.length - 1
 
-      return index;
+      return index
     },
 
-    attachEvents: function() {
-      var $img = this.$element.find('.frame img'),
-          _this = this;
+    attachEvents: function () {
+      var _this = this
 
-      $(document).on('click', '[data-behavior="pause-slideshow"]', function(e) {
-        e.preventDefault();
+      document.addEventListener("click", function (e) {
+        var target = e.target.closest('[data-behavior="pause-slideshow"]')
+        if (target) {
+          e.preventDefault()
+          _this.pause()
+        }
+      })
 
-        _this.pause();
-      });
+      document.addEventListener("click", function (e) {
+        var target = e.target.closest('[data-behavior="start-slideshow"]')
+        if (target) {
+          e.preventDefault()
+          _this.play()
+        }
+      })
 
-      $(document).on('click', '[data-behavior="start-slideshow"]', function(e) {
-        e.preventDefault();
+      document.addEventListener("click", function (e) {
+        var target = e.target.closest(
+          "[data-slide], [data-bs-slide], [data-slide-to], [data-bs-slide-to]"
+        )
+        if (target) {
+          e.preventDefault()
 
-        _this.play();
-      });
+          const slideToAttr =
+            target.getAttribute("data-slide-to") ??
+            target.getAttribute("data-bs-slide-to")
 
-      $(document).on('click', '[data-slide], [data-bs-slide], [data-slide-to], [data-bs-slide-to]', function(e) {
-        e.preventDefault();
+          const pos =
+            slideToAttr !== null
+              ? parseInt(slideToAttr, 10)
+              : target.getAttribute("data-slide") ||
+                target.getAttribute("data-bs-slide")
 
-        const pos = parseInt($(this).attr('data-slide-to') || $(this).attr('data-bs-slide-to'), 10) ||
-                $(this).attr('data-slide') ||
-                $(this).attr('data-bs-slide');
-
-        if (pos === 'next' || pos === 'prev') _this.pause();
-        _this.to(pos);
-      });
+          if (pos === "next" || pos === "prev") _this.pause()
+          _this.to(pos)
+        }
+      })
 
       // pause slideshow on modal close
-      $('#slideshow-modal').on('hidden.bs.modal', function() {
-        _this.pause();
-      });
+      var modal = document.getElementById("slideshow-modal")
+      if (modal) {
+        modal.addEventListener("hidden.bs.modal", function () {
+          _this.pause()
+        })
+      }
     }
   }
-
 
   Slideshow.DEFAULTS = {
     autoPlay: false,
     interval: 5000 // in milliseconds
   }
 
+  // Public initialization function
+  window.initSlideshow = function (selector, option) {
+    var elements =
+      typeof selector === "string"
+        ? document.querySelectorAll(selector)
+        : [selector]
 
-  $.fn.slideshow = function(option) {
-    return this.each(function() {
-      var $this = $(this);
-      var data  = $this.data('slideshow');
-      var options = $.extend({}, Slideshow.DEFAULTS, $this.data(), typeof option == 'object' && option);
+    Array.from(elements).forEach(function (element) {
+      var data = element._slideshow
+      var options = Object.assign(
+        {},
+        Slideshow.DEFAULTS,
+        element.dataset,
+        typeof option == "object" ? option : {}
+      )
 
-      if (!data) $this.data('slideshow', (data = new Slideshow(this, options)));
+      if (!data) {
+        element._slideshow = new Slideshow(element, options)
+      }
     })
   }
-
-})(jQuery);
+})()

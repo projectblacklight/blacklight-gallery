@@ -49,7 +49,7 @@ module BlacklightGallery
       append_to_file 'app/javascript/application.js' do
         <<~CONTENT
           Blacklight.onLoad(function() {
-            $('.documents-slideshow').slideshow();
+            initSlideshow('.documents-slideshow');
           });
         CONTENT
       end
