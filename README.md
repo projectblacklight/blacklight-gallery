@@ -29,11 +29,9 @@ $ rails g blacklight_gallery:install
 
 ### Installation for Node-based JS bundlers
 
-For node-based bundlers add `blacklight-gallery masonry-layout@v4` as a dependency and add this to your entrypoint:
+For node-based bundlers add this to your entrypoint:
 ```js
-import 'blacklight-gallery/vendor/assets/javascripts/imagesloaded.pkgd.js'
 import 'blacklight-gallery/app/javascript/blacklight-gallery/slideshow'
-import 'blacklight-gallery/app/javascript/blacklight-gallery/masonry'
 ```
 
 ## Manual Installation
