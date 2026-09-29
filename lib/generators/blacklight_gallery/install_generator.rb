@@ -44,15 +44,6 @@ module BlacklightGallery
           import 'blacklight-gallery'
         CONTENT
       end
-
-      # Append plugin initialization code to main application.js file
-      append_to_file 'app/javascript/application.js' do
-        <<~CONTENT
-          Blacklight.onLoad(function() {
-            initSlideshow('.documents-slideshow');
-          });
-        CONTENT
-      end
     end
 
     def add_stylesheet
