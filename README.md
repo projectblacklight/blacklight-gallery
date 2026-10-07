@@ -31,7 +31,7 @@ $ rails g blacklight_gallery:install
 
 For node-based bundlers add this to your entrypoint:
 ```js
-import 'blacklight-gallery/app/javascript/blacklight-gallery/slideshow'
+import 'blacklight-gallery'
 ```
 
 ## Manual Installation

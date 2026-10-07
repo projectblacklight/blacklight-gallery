@@ -92,4 +92,27 @@ RSpec.describe Blacklight::Gallery::SlideshowComponent, type: :component do
       it { is_expected.to have_selector 'img[src="http://example.com/thumb.jpg"]' }
     end
   end
+
+  describe 'the active slide' do
+    let(:blacklight_config) do
+      Blacklight::Configuration.new.tap { |config| config.track_search_session.storage = false }
+    end
+
+    context 'with the first document on a later page of results' do
+      let(:attr) { { document_counter: 0, counter_offset: 10 } }
+
+      it 'is active' do
+        expect(rendered).to have_selector '.carousel-item.active'
+      end
+    end
+
+    context 'with a later document on the page' do
+      let(:attr) { { document_counter: 1, counter_offset: 10 } }
+
+      it 'is not active' do
+        expect(rendered).to have_selector '.carousel-item'
+        expect(rendered).not_to have_selector '.carousel-item.active'
+      end
+    end
+  end
 end

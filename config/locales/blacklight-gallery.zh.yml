@@ -1,5 +1,8 @@
 zh:
   blacklight:
+    icon:
+      chevron_left_previous_image: '上一张图片'
+      chevron_right_next_image: '下一张图片'
     search:
       view:
         gallery: '图片式展示'
@@ -11,6 +14,3 @@ zh:
         missing_image: '图片缺失'
       modal_slideshow:
         counter: "%{counter} of %{count}"
-      slideshow:
-        pause: 暂停幻灯片展示
-        start: 启动幻灯片展示

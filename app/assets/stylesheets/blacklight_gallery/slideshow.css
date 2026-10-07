@@ -69,12 +69,6 @@
       }
     }
   }
-  .carousel-control-left {
-    left: 0px;
-  }
-  .carousel-control-right {
-    right: 0px;
-  }
   .caption {
     font-size: 1rem;
     margin: 10px auto;

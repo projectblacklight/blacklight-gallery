@@ -14,6 +14,3 @@ en:
         missing_image: 'Missing'
       modal_slideshow:
         counter: "%{counter} of %{count}"
-      slideshow:
-        pause: Pause slideshow
-        start: Start slideshow

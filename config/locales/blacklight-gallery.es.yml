@@ -1,5 +1,8 @@
 es:
   blacklight:
+    icon:
+      chevron_left_previous_image: 'imagen anterior'
+      chevron_right_next_image: 'imagen siguiente'
     search:
       view:
         gallery: Categoría
@@ -11,6 +14,3 @@ es:
         missing_image: No hay nada
       modal_slideshow:
         counter: "%{counter} de %{count}"
-      slideshow:
-        pause: Pausa la Diapositivas
-        start: Empezar la Diapositivas

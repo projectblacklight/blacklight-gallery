@@ -5,10 +5,10 @@
   </div>
 
   <!-- Controls -->
-  <button class="carousel-control-prev" data-bs-target="#slideshow" data-bs-slide="prev">
-    <%= render Blacklight::Gallery::Icons::ChevronLeftComponent.new additional_options: { label_context: 'previous_image' } %>
+  <button type="button" class="carousel-control-prev" data-bs-target="#slideshow" data-bs-slide="prev" aria-label="<%= t('blacklight.icon.chevron_left_previous_image') %>">
+    <%= render Blacklight::Gallery::Icons::ChevronLeftComponent.new(aria_hidden: true) %>
   </button>
-  <button class="carousel-control-next" data-bs-target="#slideshow" data-bs-slide="next">
-    <%= render Blacklight::Gallery::Icons::ChevronRightComponent.new additional_options: { label_context: 'next_image' } %>
+  <button type="button" class="carousel-control-next" data-bs-target="#slideshow" data-bs-slide="next" aria-label="<%= t('blacklight.icon.chevron_right_next_image') %>">
+    <%= render Blacklight::Gallery::Icons::ChevronRightComponent.new(aria_hidden: true) %>
   </button>
 </div>

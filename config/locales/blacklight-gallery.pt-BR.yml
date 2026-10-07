@@ -1,5 +1,8 @@
 pt-BR:
   blacklight:
+    icon:
+      chevron_left_previous_image: 'imagem anterior'
+      chevron_right_next_image: 'próxima imagem'
     search:
       view:
         gallery: "Galeria"
@@ -13,6 +16,3 @@ pt-BR:
         header: "Selecione uma imagem para iniciar a apresentação de slides"
       modal_slideshow:
         counter: "%{counter} de %{count}"
-      slideshow:
-        pause: Pausar a apresentação de slides
-        start: Iniciar a apresentação de slides

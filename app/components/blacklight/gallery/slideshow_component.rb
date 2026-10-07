@@ -7,6 +7,11 @@ module Blacklight
         @document.response&.total
       end
 
+      # The first slide on the page, which isn't counter 1 after the first page of results
+      def first_slide?
+        @document_counter.nil? ? @counter == 1 : @document_counter.zero?
+      end
+
       def slideshow_tag(image_options = { alt: '' })
         if view_config.slideshow_method
           method_name = view_config.slideshow_method
