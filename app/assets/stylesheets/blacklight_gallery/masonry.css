@@ -1,10 +1,8 @@
 .documents-masonry {
-  border: 1px solid #c5c5c5;
   --grid-lanes-polyfill: 1;
   display: grid-lanes;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(3, minmax(40px, auto));
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
 
   .document {
     padding: 0;
@@ -23,7 +21,6 @@
       }
     }
 
-    margin-bottom: 0.5rem;
     position: relative;
     width: auto;
 

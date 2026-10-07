@@ -166,6 +166,15 @@
  * @author Simon Willison
  * @author ninjamar
  * @license MIT
+ *
+ * Vendored from https://github.com/ninjamar/grid-lanes-polyfill (v1.0.0).
+ * Modified for blacklight-gallery:
+ * - calculateLaneSizes: changed how minmax(<min>, <fr>) lanes are sized,
+ *   from `lane.min + frUnit * fr` to `Math.max(lane.min, frUnit * fr)`.
+ *   Upstream's version made these lanes too wide, so layouts such as
+ *   repeat(auto-fill, minmax(200px, 1fr)) overflowed their container.
+ *   See the comment in calculateLaneSizes for why.
+ * Re-apply these changes when updating from upstream.
  */
 
 // ============================================================================
@@ -486,7 +495,16 @@ function calculateLaneSizes(
 
   for (const lane of lanes) {
     if (typeof lane.max === "object" && lane.max.fr) {
-      lane.size = lane.min + frUnit * lane.max.fr;
+      // [blacklight-gallery] frUnit is each fr lane's share of flexSpace. Lanes
+      // whose max is an fr unit (like this one) were not added to fixedSpace
+      // above, so flexSpace still includes the space for this lane's min.
+      // Adding lane.min on top would count it twice; treat it as a lower limit
+      // instead.
+      // e.g. 4 x minmax(200px, 1fr), 831px wide, 8px gaps:
+      //   frUnit = (831 - 24) / 4 = 201.75
+      //   lane.min + frUnit          = 401.75  (lanes + gaps = 1631px, overflows)
+      //   Math.max(lane.min, frUnit) = 201.75  (lanes + gaps = 831px, fits)
+      lane.size = Math.max(lane.min, frUnit * lane.max.fr);
     } else {
       lane.size = lane.min;
     }
