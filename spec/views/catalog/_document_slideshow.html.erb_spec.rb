@@ -3,11 +3,7 @@ require 'spec_helper'
 RSpec.describe "catalog/_document_slideshow", :type => :view do
   let(:blacklight_config) do
     Blacklight::Configuration.new do |config|
-      if Blacklight::VERSION > '8'
-        config.track_search_session.storage = false
-      else
-        config.track_search_session = false
-      end
+      config.track_search_session.storage = false
     end
   end
 

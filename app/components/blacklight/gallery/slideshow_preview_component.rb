@@ -29,22 +29,12 @@ module Blacklight
         with_thumbnail(thumbnail_content)
       end
 
-      def presenter
-        @presenter ||= @view_context.document_presenter(@document)
-      end
-
-      def render_document_class(*args)
-        @view_context.render_document_class(*args)
-      end
-
       def link_to_document
         helpers.link_to_document(@document, thumbnail, class: 'thumbnail', data: data_attributes)
       end
 
       def data_attributes
-        # 'context-href': nil is for Blacklight < 7.38, :context_href is for those after 7.38
         {
-          'context-href': nil,
           context_href: nil,
           'slide-to': @slide_to,
           'bs-slide-to': @slide_to,

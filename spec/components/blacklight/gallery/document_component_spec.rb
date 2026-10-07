@@ -4,11 +4,7 @@ require 'spec_helper'
 
 RSpec.describe Blacklight::Gallery::DocumentComponent, type: :component do
   subject(:component) do
-    if Blacklight::VERSION > '8'
-      described_class.new(document: presenter, **attr)
-    else
-      described_class.new(document: document, presenter: presenter, **attr)
-    end
+    described_class.new(document: presenter, **attr)
   end
 
   let(:attr) { {} }
@@ -33,11 +29,7 @@ RSpec.describe Blacklight::Gallery::DocumentComponent, type: :component do
 
   let(:blacklight_config) do
     CatalogController.blacklight_config.deep_copy.tap do |config|
-      if Blacklight::VERSION > '8'
-        config.track_search_session.storage = false
-      else
-        config.track_search_session = false
-      end
+      config.track_search_session.storage = false
       config.index.thumbnail_field = 'thumbnail_path_ss'
     end
   end

@@ -1,8 +1,4 @@
-<% component = Blacklight::VERSION > '8' ?
-  Blacklight::DocumentComponent.new(classes: 'slideshow-preview-thumbnail', component: :div, document: @presenter, counter: @counter) :
-  Blacklight::DocumentComponent.new(classes: 'slideshow-preview-thumbnail', component: :div, document: @document, presenter: @presenter, counter: @counter)
-%>
-<%= render(component) do |component| %>
+<%= render Blacklight::DocumentComponent.new(classes: 'slideshow-preview-thumbnail', component: :div, document: @presenter, counter: @counter) do |component| %>
   <% component.with_body do %>
     <%= link_to_document %>
   <% end %>

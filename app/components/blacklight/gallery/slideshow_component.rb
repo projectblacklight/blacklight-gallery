@@ -7,14 +7,6 @@ module Blacklight
         @document.response&.total
       end
 
-      def render_document_class(*args)
-        @view_context.render_document_class(*args)
-      end
-
-      def presenter
-        @presenter ||= @view_context.document_presenter(@document)
-      end
-
       def slideshow_tag(image_options = { alt: '' })
         if view_config.slideshow_method
           method_name = view_config.slideshow_method
