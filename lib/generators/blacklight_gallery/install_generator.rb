@@ -35,12 +35,9 @@ module BlacklightGallery
       return unless defined?(Importmap)
 
       say 'Installing assets for use with Importmaps', :green
-      append_to_file 'config/importmap.rb', "pin \"jquery\", to: \"https://code.jquery.com/jquery-3.7.1.min.js\"\n"
-
       append_to_file 'app/javascript/application.js', after: /import Blacklight .*$/ do
         <<~CONTENT
 
-          import 'jquery'
           import 'blacklight-gallery'
         CONTENT
       end
