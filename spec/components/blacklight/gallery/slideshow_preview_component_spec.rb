@@ -4,11 +4,7 @@ require 'spec_helper'
 
 RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component do
   subject(:component) do
-    if Blacklight::VERSION > '8'
-      described_class.new(document: presenter, document_counter: 5, **attr)
-    else
-      described_class.new(document: document, document_counter: 5, presenter: presenter, **attr)
-    end
+    described_class.new(document: presenter, document_counter: 5, **attr)
   end
 
   let(:attr) { {} }
@@ -21,7 +17,6 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
     Capybara::Node::Simple.new(render)
   end
 
-  let(:blacklight_config) { Blacklight::Configuration.new }
   let(:presenter) { Blacklight::IndexPresenter.new(document, view_context, blacklight_config) }
 
   before do
@@ -36,11 +31,7 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
   let(:blacklight_config) do
     Blacklight::Configuration.new.tap do |config|
       config.index.thumbnail_field = 'thumbnail_path_ss'
-      if Blacklight::VERSION > '8'
-        config.track_search_session.storage = false
-      else
-        config.track_search_session = false
-      end
+      config.track_search_session.storage = false
     end
   end
 

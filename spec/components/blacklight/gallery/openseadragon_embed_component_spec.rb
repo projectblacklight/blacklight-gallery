@@ -38,11 +38,7 @@ RSpec.describe Blacklight::Gallery::OpenseadragonEmbedComponent, type: :componen
     let(:blacklight_config) do
       Blacklight::Configuration.new.tap do |config|
         config.index.slideshow_method = :xyz
-        if Blacklight::VERSION > '8'
-          config.track_search_session.storage = false
-        else
-          config.track_search_session = false
-        end
+        config.track_search_session.storage = false
       end
     end
     it 'uses a single @id_prefix to generate unique control ids' do
