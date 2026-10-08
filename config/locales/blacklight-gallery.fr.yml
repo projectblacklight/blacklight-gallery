@@ -1,5 +1,8 @@
 fr:
   blacklight:
+    icon:
+      chevron_left_previous_image: 'image précédente'
+      chevron_right_next_image: 'image suivante'
     search:
       view:
         gallery: "Galerie"
@@ -11,6 +14,3 @@ fr:
         missing_image: 'Image manquante'
       modal_slideshow:
         counter: "%{counter} de %{count}"
-      slideshow:
-        pause: Suspendre le diaporama
-        start: Lancer le diaporama

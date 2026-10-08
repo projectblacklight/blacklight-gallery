@@ -14,6 +14,3 @@ ar:
         missing_image: 'غير موجود'
       modal_slideshow:
         counter: "%{counter} من %{count}"
-      slideshow:
-        pause: وقف عرض الصور
-        start: بدء عرض الصور

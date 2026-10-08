@@ -3,150 +3,6 @@
   factory();
 })((function () { 'use strict';
 
-  (function () {
-    var Slideshow = function (element, options) {
-      this.element = element;
-      this.options = options;
-      this.paused = false;
-      this.activeIndex = 0;
-
-      this.init = function () {
-        this.items = Array.from(this.element.querySelectorAll(".item"));
-      };
-
-      this.attachEvents();
-      this.init();
-    };
-
-    Slideshow.prototype = {
-      slide: function (item) {
-        this.items.forEach(el => (el.style.display = "none"));
-        item.style.display = "block";
-
-        this.activeIndex = this.items.indexOf(item);
-
-        if (this.options.autoPlay && !this.paused) this.play();
-
-        return this
-      },
-
-      play: function () {
-        this.paused = false;
-
-        if (this.interval) clearInterval(this.interval);
-        this.interval = setInterval(this.next.bind(this), this.options.interval);
-      },
-
-      pause: function () {
-        this.paused = true;
-        clearInterval(this.interval);
-        this.interval = null;
-
-        return this
-      },
-
-      startAt: function (pos) {
-        this.to(pos);
-      },
-
-      next: function () {
-        return this.to("next")
-      },
-
-      to: function (pos) {
-        if (pos === "next") pos = this.activeIndex + 1;
-        if (pos === "prev") pos = this.activeIndex - 1;
-
-        return this.slide(this.items[this.getValidIndex(pos)])
-      },
-
-      getValidIndex: function (index) {
-        if (typeof index === "undefined" || index > this.items.length - 1)
-          index = 0;
-        if (index < 0) index = this.items.length - 1;
-
-        return index
-      },
-
-      attachEvents: function () {
-        var _this = this;
-
-        document.addEventListener("click", function (e) {
-          var target = e.target.closest('[data-behavior="pause-slideshow"]');
-          if (target) {
-            e.preventDefault();
-            _this.pause();
-          }
-        });
-
-        document.addEventListener("click", function (e) {
-          var target = e.target.closest('[data-behavior="start-slideshow"]');
-          if (target) {
-            e.preventDefault();
-            _this.play();
-          }
-        });
-
-        document.addEventListener("click", function (e) {
-          var target = e.target.closest(
-            "[data-slide], [data-bs-slide], [data-slide-to], [data-bs-slide-to]"
-          );
-          if (target) {
-            e.preventDefault();
-
-            const slideToAttr =
-              target.getAttribute("data-slide-to") ??
-              target.getAttribute("data-bs-slide-to");
-
-            const pos =
-              slideToAttr !== null
-                ? parseInt(slideToAttr, 10)
-                : target.getAttribute("data-slide") ||
-                  target.getAttribute("data-bs-slide");
-
-            if (pos === "next" || pos === "prev") _this.pause();
-            _this.to(pos);
-          }
-        });
-
-        // pause slideshow on modal close
-        var modal = document.getElementById("slideshow-modal");
-        if (modal) {
-          modal.addEventListener("hidden.bs.modal", function () {
-            _this.pause();
-          });
-        }
-      }
-    };
-
-    Slideshow.DEFAULTS = {
-      autoPlay: false,
-      interval: 5000 // in milliseconds
-    };
-
-    // Public initialization function
-    window.initSlideshow = function (selector, option) {
-      var elements =
-        typeof selector === "string"
-          ? document.querySelectorAll(selector)
-          : [selector];
-
-      Array.from(elements).forEach(function (element) {
-        var data = element._slideshow;
-        var options = Object.assign(
-          {},
-          Slideshow.DEFAULTS,
-          element.dataset,
-          typeof option == "object" ? option : {}
-        );
-
-        if (!data) {
-          element._slideshow = new Slideshow(element, options);
-        }
-      });
-    };
-  })();
-
   /**
    * CSS Grid Lanes Polyfill
    *
@@ -1195,6 +1051,18 @@
     if (!supportsGridLanes()) {
       init({ force: true });
     }
+  });
+
+  // When a thumbnail opens the slideshow modal, show the slide for that thumbnail.
+  // Bootstrap's carousel reads the current slide from the DOM, so moving the
+  // active class before the modal is shown is enough.
+  document.addEventListener("show.bs.modal", (event) => {
+    const slideTo = event.relatedTarget?.dataset.bsSlideTo;
+    const items = event.target.querySelectorAll(".carousel-item");
+    if (slideTo === undefined || !items[slideTo]) return
+
+    items.forEach((item) => item.classList.remove("active"));
+    items[slideTo].classList.add("active");
   });
 
 }));

@@ -1,5 +1,8 @@
 de:
   blacklight:
+    icon:
+      chevron_left_previous_image: 'vorheriges Bild'
+      chevron_right_next_image: 'nächstes Bild'
     search:
       view:
         gallery: "Bildergalerie"
