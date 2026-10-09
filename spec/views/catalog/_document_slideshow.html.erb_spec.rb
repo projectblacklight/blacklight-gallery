@@ -28,7 +28,7 @@ RSpec.describe 'catalog/_document_slideshow', type: :view do
     expect(rendered).to have_selector '#slideshow-modal'
     expect(rendered).to have_selector 'button[data-bs-slide="prev"][aria-label="previous image"]'
     expect(rendered).to have_selector 'button[data-bs-slide="next"][aria-label="next image"]'
-    expect(rendered).to have_selector '[data-slide-to="0"][data-bs-slide-to="0"][data-toggle="modal"]' \
-                                      '[data-bs-toggle="modal"][data-target="#slideshow-modal"]'
+    expect(rendered).to have_selector '[data-bs-slide-to="0"][data-bs-toggle="modal"]' \
+                                      '[data-bs-target="#slideshow-modal"]'
   end
 end

@@ -36,11 +36,8 @@ module Blacklight
       def data_attributes
         {
           context_href: nil,
-          'slide-to': @slide_to,
           'bs-slide-to': @slide_to,
-          toggle: "modal",
           'bs-toggle': "modal",
-          target: "#slideshow-modal",
           'bs-target': "#slideshow-modal"
         }
       end

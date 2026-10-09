@@ -43,7 +43,7 @@ RSpec.describe Blacklight::Gallery::SlideshowPreviewComponent, type: :component 
     end
 
     it 'renders the correct slide number' do
-      expect(rendered).to have_css '[data-slide-to=\"5\"][data-bs-slide-to=\"5\"]'
+      expect(rendered).to have_css '[data-bs-slide-to="5"]'
     end
 
     context 'when the presenter returns nothing' do
