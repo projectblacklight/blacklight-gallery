@@ -15,6 +15,13 @@ class TestAppGenerator < Rails::Generators::Base
     generate 'blacklight:install'
   end
 
+  # Use the local blacklight-gallery assets rather than the published package
+  def add_local_package
+    return unless File.exist?('app/assets/stylesheets/application.bootstrap.scss')
+
+    run "yarn add file:#{Blacklight::Gallery::Engine.root}"
+  end
+
   def run_gallery_install
     generate 'blacklight_gallery:install'
   end
